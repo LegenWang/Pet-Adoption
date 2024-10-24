@@ -1,0 +1,180 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" version="24.8.0">
+  <diagram name="Page-1" id="l3J0M18WV1tFpXnMCoSJ">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-1" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="170" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-2" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="-98.75" y="548.25" width="557.5" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-3" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="140" y="548.25" width="557.5" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-4" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="380" y="548.25" width="557.5" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-5" value="Browser" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="358.75" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-6" value="Webserver" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="598.75" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-7" value="Database" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="838.75" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-8" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="620" y="550" width="557.5" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-9" value="User enters username and password&lt;div&gt;to log in&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;exitX=0.932;exitY=0.98;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.932;entryY=-0.018;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="ga5MY5pB4GoPFhYm-FL9-2" target="ga5MY5pB4GoPFhYm-FL9-3">
+          <mxGeometry x="-0.0833" y="10" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="210" y="320" as="sourcePoint" />
+            <mxPoint x="300" y="320" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-10" value="browser sends an http request with&lt;div&gt;username and password to webserver&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;exitX=0.862;exitY=1.049;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.861;entryY=-0.075;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="ga5MY5pB4GoPFhYm-FL9-3" target="ga5MY5pB4GoPFhYm-FL9-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="478.75" y="390" as="sourcePoint" />
+            <mxPoint x="528.75" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-11" value="webserver checks with the database to&lt;div&gt;retrieve information&amp;nbsp;&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;exitX=0.79;exitY=0.992;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ga5MY5pB4GoPFhYm-FL9-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="400" as="sourcePoint" />
+            <mxPoint x="880" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-12" value="Database checks&lt;div&gt;information and returns credentials&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="838.75" y="420" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-13" value="returns correct user data for the user" style="endArrow=classic;html=1;rounded=0;entryX=0.573;entryY=1.068;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.577;exitY=-0.056;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ga5MY5pB4GoPFhYm-FL9-8" target="ga5MY5pB4GoPFhYm-FL9-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="880" y="520" as="sourcePoint" />
+            <mxPoint x="838.75" y="498.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-15" value="Webserver checks&lt;div&gt;if user credentials are&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;correct&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="598.75" y="532.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-16" value="Webserver returns the result of the&lt;div&gt;credential check to browser&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;entryX=0.357;entryY=1.011;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.359;exitY=0.001;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ga5MY5pB4GoPFhYm-FL9-4" target="ga5MY5pB4GoPFhYm-FL9-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="640" y="640" as="sourcePoint" />
+            <mxPoint x="620" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-17" value="browser returns the result&lt;div&gt;back to the user&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;exitX=0.288;exitY=-0.056;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.287;entryY=1.056;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="ga5MY5pB4GoPFhYm-FL9-3" target="ga5MY5pB4GoPFhYm-FL9-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="308.75" y="710" as="sourcePoint" />
+            <mxPoint x="358.75" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-18" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;User login flow&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="100" width="291.25" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-20" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1118.75" y="170" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-21" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="760" y="648.25" width="757.5" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-22" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="999.69" y="647.32" width="755.63" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-23" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="1239.69" y="647.32" width="755.63" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-24" value="Browser" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1317.5" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-25" value="Webserver" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1557.5" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-26" value="Database" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1797.5" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ga5MY5pB4GoPFhYm-FL9-27" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="1479.69" y="649.07" width="755.63" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-1" value="User clicks on pet available for&lt;div&gt;adoption&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1150" y="320" as="sourcePoint" />
+            <mxPoint x="1362" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-2" value="Browser sends http request&lt;div&gt;to view the pet information and details&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1393" y="360" as="sourcePoint" />
+            <mxPoint x="1600" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-3" value="Webserver requests the correct data&lt;div&gt;for the pet in the database&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1630" y="400" as="sourcePoint" />
+            <mxPoint x="1840" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-4" value="Database returns the correct data" style="endArrow=classic;html=1;rounded=0;entryX=0.736;entryY=1.138;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="ga5MY5pB4GoPFhYm-FL9-23">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1840" y="480" as="sourcePoint" />
+            <mxPoint x="1640" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-5" value="returns the pet data to display on&lt;div&gt;the browser&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1600" y="520" as="sourcePoint" />
+            <mxPoint x="1393" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-6" value="User receives and reads&lt;div&gt;the pet&#39;s information&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;entryX=0.632;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="ga5MY5pB4GoPFhYm-FL9-21">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1360" y="560" as="sourcePoint" />
+            <mxPoint x="1160" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-7" value="User clicks the&amp;nbsp;&lt;div&gt;apply for adoption button&amp;nbsp;&lt;/div&gt;&lt;div&gt;and fills out the application&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry x="-0.0016" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1150" y="680" as="sourcePoint" />
+            <mxPoint x="1360" y="680" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-9" value="browser sends the application&lt;div&gt;to the webserver&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1390" y="720" as="sourcePoint" />
+            <mxPoint x="1600" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-10" value="stores the users application in&amp;nbsp;&lt;div&gt;the database so it can be reviewed&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1630" y="800" as="sourcePoint" />
+            <mxPoint x="1840" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-11" value="database confirms if application&lt;div&gt;was stored&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;entryX=0.209;entryY=1.083;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="ga5MY5pB4GoPFhYm-FL9-23">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1840" y="880" as="sourcePoint" />
+            <mxPoint x="1640" y="919" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-13" value="webserver forwards confirmation&lt;div&gt;to browser&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1600" y="920" as="sourcePoint" />
+            <mxPoint x="1393" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-14" value="browser returns confirmation&lt;div&gt;to the user&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1360" y="960" as="sourcePoint" />
+            <mxPoint x="1153" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8hKv1HFF3fMATi2Wgcc8-17" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;application/pet adoption&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 27px; background-color: initial;&quot;&gt;flow&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1317.5" y="100" width="390" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
