@@ -6,6 +6,10 @@ on:
     branches:
       - Develop
       - main
+      - feature-main-api
+      - feature-pets-api
+      - feature-user-api
+      - feature-management-api
 
 jobs:
   # Each job runs in parallel
@@ -35,10 +39,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pylint
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       # Run pylint on your pulled code in the Docker container running the job
       - name: Analysing the code with pylint
         run: |
-          pylint backend/**/*.py
+          pylint backend
   pytest_job:
 
     # runs-on indicates which GitHub "Runners" will run this CICD pipeline
