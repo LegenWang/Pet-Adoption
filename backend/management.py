@@ -14,7 +14,7 @@ managers = [
     {"id": 1, "manager_email": "admin@example.com", "manager_password": "password123"}
 ]
 
-@application_blueprint.route('', methods=['GET'])
+@application_blueprint.route('/', methods=['GET'])
 def get_applications():
     """Returns a list of all applications."""
     return jsonify(applications)
@@ -33,10 +33,11 @@ def manage_login():
     data = request.get_json()
     manager_email = data.get("manager_email")
     manager_password = data.get("manager_password")
-    
+
     # Check for manager credentials in the sample data
     for manager in managers:
-        if manager["manager_email"] == manager_email and manager["manager_password"] == manager_password:
-            return jsonify({"message": "Login successful"}), 200
-    
+        if manager["manager_email"] == manager_email:
+            if manager["manager_password"] == manager_password:
+                return jsonify({"message": "Login successful"}), 200
+
     return jsonify({"message": "Invalid credentials"}), 401
