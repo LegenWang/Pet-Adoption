@@ -8,10 +8,8 @@ from management import application_blueprint
 
 # Configure the app for testing
 @pytest.fixture
-def client():
-    '''
-    build client
-    '''
+def test_client():
+    """Fixture to configure the test client."""
     app = Flask(__name__)
     app.register_blueprint(application_blueprint)
     app.config['TESTING'] = True
@@ -20,7 +18,7 @@ def client():
 
 def test_get_applications(test_client):
     """Test retrieving all applications."""
-    response = test_client.get('/applications')
+    response = test_client.get('/')
     assert response.status_code == 200
     data = response.get_json()
     assert isinstance(data, list)  # Check that response is a list
@@ -28,14 +26,14 @@ def test_get_applications(test_client):
 
 def test_get_application_success(test_client):
     """Test retrieving a specific application by ID."""
-    response = test_client.get('/applications/1')  # Assuming ID 1 exists
+    response = test_client.get('/1')  # Assuming ID 1 exists
     assert response.status_code == 200
     data = response.get_json()
     assert data['user_name'] == "Alice"  # Check specific user data based on the mock data
 
 def test_get_application_not_found(test_client):
     """Test retrieving an application with an ID that does not exist."""
-    response = test_client.get('/applications/999')  # Assuming ID 999 does not exist
+    response = test_client.get('/999')  # Assuming ID 999 does not exist
     assert response.status_code == 404
     assert b'Application not found' in response.data
 
