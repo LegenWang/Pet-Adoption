@@ -10,13 +10,15 @@ pets = [
 ]
 
 @pets_blueprint.route('/', methods=['GET'])
+
 def get_pets():
     """Returns all pet data"""
     return jsonify(pets), 200
 
-@pets_blueprint.route('/<int:pet_id>', methods=['GET'])
+@pet_blueprint.route('/<int:pet_id>', methods=['GET'])
 def get_pet(pet_id):
-    """Returns the data of one pet based on the pet_id number"""
+    """Returns the data of one pet based on the pet_id"""
+
     for pet in pets:
         if pet['id'] == pet_id:
             return jsonify(pet), 200

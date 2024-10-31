@@ -1,55 +1,60 @@
 ''' Test file '''
 import pytest
-from main import app 
+from flask import Flask
+from users import user_blueprint
 
 @pytest.fixture
 def client():
-    '''Provides a test client for the Flask application used for making requests to the app '''
-    app.testing = True
-    with app.test_client() as test_client:
-        yield test_client
+    """ Configure the test client."""
+    app = Flask(__name__)
+    app.register_blueprint(user_blueprint)
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
 
-def test_register_user(test_client):
-    ''' Test the registration of a new user'''
-    username = "janedoe"
-    password = "randompassword123"
-    
-    response = test_client.post('/users/register', json={"username": username, "password": password})
-    assert response.status_code == 201
-    assert b"User registered successfully" in response.data
-
-def test_register_existing_user(test_client):
-    ''' Test registration attempt with an existing username'''
-    username = "steven"
-    password = "1234567"
-    
-    response = test_client.post('/users/register', json={"username": username, "password": password})
-    assert response.status_code == 400
-    assert b"Username already exists" in response.data
-
-def test_login_user(test_client):
-    ''' Test user login with correct credentials'''
-    username = "james"
-    password = "helloworld"
-    
-    response = test_client.post('/users/login', json={"username": username, "password": password})
+def test_login_success(client):
+    """Test successful user login."""
+    response = client.post('/login', json={
+        "username": "steven",
+        "password": "1234567"
+    })
     assert response.status_code == 200
-    assert b"janedoe" in response.data  
+    data = response.get_json()
+    assert data["username"] == "steven"
 
-def test_login_invalid_user(test_client):
-    ''' Test login attempt with an invalid username'''
-    invalid_username = "truman"
-    invalid_password = "wrongpass"
-    
-    response = test_client.post('/users/login', json={"username": invalid_username, "password": invalid_password})
+def test_login_failure(client):
+    """Test user login with incorrect credentials."""
+    response = client.post('/login', json={
+        "username": "steven",
+        "password": "wrongpassword"
+    })
     assert response.status_code == 401
-    assert b"Invalid username or password" in response.data
+    data = response.get_json()
+    assert data["error"] == "Invalid username or password"
 
-def test_login_invalid_password(test_client):
-    ''' Test login attempt with an incorrect password'''
-    username = "steven"
-    invalid_password = "wrongpass"
-    
-    response = test_client.post('/users/login', json={"username": username, "password": invalid_password})
-    assert response.status_code == 401
-    assert b"Invalid username or password" in response.data
+def test_register_success(client):
+    """Test successful user registration."""
+    response = client.post('/register', json={
+        "username": "new_user",
+        "password": "newpassword"
+    })
+    assert response.status_code == 201
+    data = response.get_json()
+    assert data["message"] == "User registered successfully"
+
+def test_register_username_exists(client):
+    """Test user registration with an existing username."""
+    # First, register the user
+    client.post('/register', json={
+        "username": "existing_user",
+        "password": "password"
+    })
+
+    # Attempt to register the same user again
+    response = client.post('/register', json={
+        "username": "existing_user",
+        "password": "newpassword"
+    })
+    assert response.status_code == 400
+    data = response.get_json()
+    assert data["error"] == "Username already exists"
