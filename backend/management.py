@@ -1,3 +1,7 @@
+"""
+Unit tests for the management module, including tests for application retrieval 
+and manager login functionality.
+"""
 from flask import request, jsonify, Blueprint
 
 application_blueprint = Blueprint("application", __name__)
