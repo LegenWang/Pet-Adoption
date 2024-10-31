@@ -1,6 +1,6 @@
-from flask import Flask, request, jsonify, Blueprint
+from flask import  request, jsonify, Blueprint
 
-application_blueprint = Flask(__name__)
+application_blueprint = Blueprint("application",__name__)
 
 # Sample data for testing purposes
 applications = [
@@ -40,7 +40,3 @@ def manage_login():
             return jsonify({"message": "Login successful"}), 200
     
     return jsonify({"message": "Invalid credentials"}), 401
-
-
-if __name__ == "__main__":
-    application_blueprint.run(debug=True)
