@@ -6,7 +6,7 @@ from pets import pets_blueprint
 @pytest.fixture
 def client():
     """ Configure the test client."""
-    app = Flask(_name)
+    app = Flask(__name__)
     app.register_blueprint(pets_blueprint)
     app.config['TESTING'] = True
     with app.test_client() as test_client:
