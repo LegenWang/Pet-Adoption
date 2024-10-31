@@ -17,9 +17,9 @@ def login_users():
     password = credentials.get("password")
 
     user = None
-    for u in users:
-        if u["username"] == username and u["password"] == password:
-            user = u
+    for user_entry in users:
+        if user_entry["username"] == username and user_entry["password"] == password:
+            user = user_entry
             break
 
     if user is None:
@@ -34,8 +34,8 @@ def register_user():
     user_data = request.json
     username = user_data.get("username")
 
-    for user in users:
-        if user["username"] == username:
+    for existing_user in users:
+        if existing_user["username"] == username:
             return jsonify({"error": "Username already exists"}), 400
 
     users.append({
