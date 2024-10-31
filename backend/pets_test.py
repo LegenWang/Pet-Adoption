@@ -5,6 +5,7 @@ from flask import Flask
 from main import pets_blueprint
 
 class PetBlueprintTestCase(unittest.TestCase):
+    """Contains API tests for pets_blueprint"""
     def setUp(self):
         """Set up the Flask application for testing"""
         self.app = Flask(__name__)
