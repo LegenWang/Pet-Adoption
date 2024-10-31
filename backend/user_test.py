@@ -5,6 +5,7 @@ from users import user_blueprint
 
 class TestAPI:
     ''' class for all the unittests'''
+
     client = None
 
     @pytest.fixture(autouse=True, scope='function')
