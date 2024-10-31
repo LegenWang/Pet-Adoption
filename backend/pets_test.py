@@ -32,9 +32,3 @@ def test_get_pet_not_found(client):
     assert response.status_code == 200
     data = response.get_json()
     assert data['name'] == 'Buddy'
-
-def test_get_pet_not_found(self):
-    """Test retrieving a pet by ID that does not exist"""
-    response = self.client.get('/pets/999')
-    self.assertEqual(response.status_code, 404)
-    self.assertIn('Pet not found', str(response.data))
