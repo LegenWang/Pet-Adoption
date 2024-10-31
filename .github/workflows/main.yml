@@ -6,6 +6,10 @@ on:
     branches:
       - Develop
       - main
+      - feature-main-api
+      - feature-pets-api
+      - feature-user-api
+      - feature-management-api
 
 jobs:
   # Each job runs in parallel
