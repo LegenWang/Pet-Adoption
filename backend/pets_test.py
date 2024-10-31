@@ -4,7 +4,7 @@ from flask import Flask
 from pets import pets_blueprint
 
 @pytest.fixture
-def client():
+def create_test_client():
     """ Configure the test client."""
     app = Flask(__name__)
     app.register_blueprint(pets_blueprint)
