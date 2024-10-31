@@ -42,7 +42,7 @@ jobs:
       # Run pylint on your pulled code in the Docker container running the job
       - name: Analysing the code with pylint
         run: |
-          pylint backend/**/*.py
+          pylint backend
   pytest_job:
 
     # runs-on indicates which GitHub "Runners" will run this CICD pipeline
