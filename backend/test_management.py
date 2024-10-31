@@ -1,7 +1,6 @@
-"""
-Unit tests for the management module, including tests for application retrieval 
-and manager login functionality.
-"""
+'''
+test
+'''
 import pytest
 from flask import Flask
 from management import application_blueprint
@@ -13,27 +12,27 @@ def test_client():
     app = Flask(__name__)
     app.register_blueprint(application_blueprint)
     app.config['TESTING'] = True
-    with app.test_client() as test_client:
-        yield test_client
+    with app.test_client() as test_client_instance:
+        yield test_client_instance
 
 def test_get_applications(test_client):
     """Test retrieving all applications."""
     response = test_client.get('/')
     assert response.status_code == 200
     data = response.get_json()
-    assert isinstance(data, list)  # Check that response is a list
-    assert len(data) > 0           # Check that there is at least one application
+    assert isinstance(data, list)
+    assert len(data) > 0
 
 def test_get_application_success(test_client):
     """Test retrieving a specific application by ID."""
-    response = test_client.get('/1')  # Assuming ID 1 exists
+    response = test_client.get('/1')
     assert response.status_code == 200
     data = response.get_json()
-    assert data['user_name'] == "Alice"  # Check specific user data based on the mock data
+    assert data['user_name'] == "Alice"
 
 def test_get_application_not_found(test_client):
     """Test retrieving an application with an ID that does not exist."""
-    response = test_client.get('/999')  # Assuming ID 999 does not exist
+    response = test_client.get('/999')
     assert response.status_code == 404
     assert b'Application not found' in response.data
 
