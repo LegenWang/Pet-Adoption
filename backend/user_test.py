@@ -33,7 +33,7 @@ def test_login_user(test_client):
     username = "james"
     password = "helloworld"
 
-    response = test_client.post('/users/login', 
+    response = test_client.post('/users/login',
         json={"username": username, "password": password})
     assert response.status_code == 200
     assert b"janedoe" in response.data
