@@ -9,12 +9,12 @@ def client():
     app = Flask(__name__)
     app.register_blueprint(user_blueprint)
     app.config['TESTING'] = True
-    with app.test_client() as client:
-        yield client
+    with app.test_client() as test_client:
+        yield test_client
 
-def test_login_success(client):
+def test_login_success(test_client):
     """Test successful user login."""
-    response = client.post('/login', json={
+    response = test_client.post('/login', json={
         "username": "steven",
         "password": "1234567"
     })
@@ -22,9 +22,9 @@ def test_login_success(client):
     data = response.get_json()
     assert data["username"] == "steven"
 
-def test_login_failure(client):
+def test_login_failure(test_client):
     """Test user login with incorrect credentials."""
-    response = client.post('/login', json={
+    response = test_client.post('/login', json={
         "username": "steven",
         "password": "wrongpassword"
     })
@@ -32,9 +32,9 @@ def test_login_failure(client):
     data = response.get_json()
     assert data["error"] == "Invalid username or password"
 
-def test_register_success(client):
+def test_register_success(test_client):
     """Test successful user registration."""
-    response = client.post('/register', json={
+    response = test_client.post('/register', json={
         "username": "new_user",
         "password": "newpassword"
     })
@@ -42,16 +42,14 @@ def test_register_success(client):
     data = response.get_json()
     assert data["message"] == "User registered successfully"
 
-def test_register_username_exists(client):
+def test_register_username_exists(test_client):
     """Test user registration with an existing username."""
-    # First, register the user
-    client.post('/register', json={
+    test_client.post('/register', json={
         "username": "existing_user",
         "password": "password"
     })
 
-    # Attempt to register the same user again
-    response = client.post('/register', json={
+    response = test_client.post('/register', json={
         "username": "existing_user",
         "password": "newpassword"
     })
