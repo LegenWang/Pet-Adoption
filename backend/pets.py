@@ -15,7 +15,7 @@ def get_pets():
     """Returns all pet data"""
     return jsonify(pets), 200
 
-@pet_blueprint.route('/<int:pet_id>', methods=['GET'])
+@pets_blueprint.route('/<int:pet_id>', methods=['GET'])
 def get_pet(pet_id):
     """Returns the data of one pet based on the pet_id"""
 
