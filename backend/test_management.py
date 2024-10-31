@@ -3,13 +3,15 @@ Unit tests for the management module, including tests for application retrieval
 and manager login functionality.
 """
 import pytest
-from main import app
 from flask import Flask
 from management import application_blueprint
 
 # Configure the app for testing
 @pytest.fixture
 def client():
+    '''
+    build client
+    '''
     app = Flask(__name__)
     app.register_blueprint(application_blueprint)
     app.config['TESTING'] = True
