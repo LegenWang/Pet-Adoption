@@ -16,7 +16,6 @@ def login_users():
     password = credentials.get("password")
 
     user = None
-
     for u in users:
         if u["username"] == username and u["password"] == password:
             user = u
