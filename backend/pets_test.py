@@ -1,13 +1,16 @@
 """Tests for the pets API"""
 import pytest
+from flask import Flask
 from pets import pets_blueprint
 
 @pytest.fixture
 def client():
-    """Configure blueprint testing"""
-    pets_blueprint.config['TESTING'] = True
-    with pets_blueprint.test_client() as client:
-        yield client
+    """ Configure the test client."""
+    app = Flask(_name)
+    app.register_blueprint(pets_blueprint)
+    app.config['TESTING'] = True
+    with app.test_client() as test_client:
+        yield test_client
 
 def test_get_pets(client):
     """Test the GET / endpoint"""
