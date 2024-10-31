@@ -1,6 +1,8 @@
+"""Tests for the pets API"""
+
 import unittest
 from flask import Flask
-from main import pets_blueprint, user_blueprint, management_blueprint
+from main import pets_blueprint
 
 class PetBlueprintTestCase(unittest.TestCase):
     def setUp(self):

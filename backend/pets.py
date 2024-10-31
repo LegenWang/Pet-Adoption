@@ -1,4 +1,6 @@
-from flask import Flask, request, jsonify, Blueprint
+"""API methods related to pet information"""
+
+from flask import jsonify, Blueprint
 pets_blueprint = Blueprint('pets', __name__)
 
 pets = [
