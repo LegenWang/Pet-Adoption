@@ -9,7 +9,7 @@ pets = [
     {"id": 3, "name": "Tucker", "breed": "Mixed", "age": "8 months", "adopted": False},
 ]
 
-@pets_blueprint.route('', methods=['GET'])
+@pets_blueprint.route('/', methods=['GET'])
 def get_pets():
     """Returns all pet data"""
     return jsonify(pets), 200
