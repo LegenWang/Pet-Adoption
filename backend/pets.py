@@ -1,5 +1,7 @@
-from flask import Flask, request, jsonify, Blueprint
-pet_blueprint = Blueprint('pets', __name__)
+"""API methods related to pet information"""
+
+from flask import jsonify, Blueprint
+pets_blueprint = Blueprint('pets', __name__)
 
 pets = [
     {"id": 1, "name": "Buddy", "breed": "Golden Retriever", "age": "4 years", "adopted": False},
@@ -7,7 +9,8 @@ pets = [
     {"id": 3, "name": "Tucker", "breed": "Mixed", "age": "8 months", "adopted": False},
 ]
 
-@pet_blueprint.route('', methods=['GET'])
+@pets_blueprint.route('/', methods=['GET'])
+
 def get_pets():
     """Returns all pet data"""
     return jsonify(pets), 200
@@ -15,6 +18,7 @@ def get_pets():
 @pet_blueprint.route('/<int:pet_id>', methods=['GET'])
 def get_pet(pet_id):
     """Returns the data of one pet based on the pet_id"""
+
     for pet in pets:
         if pet['id'] == pet_id:
             return jsonify(pet), 200
