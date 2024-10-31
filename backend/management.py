@@ -15,7 +15,7 @@ managers = [
 ]
 
 # Endpoint to get all applications
-@application_blueprint.route('', methods=['GET'])
+@application_blueprint.route('/', methods=['GET'])
 def get_applications():
     return jsonify(applications)
 
