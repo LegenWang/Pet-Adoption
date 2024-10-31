@@ -39,6 +39,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pylint
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       # Run pylint on your pulled code in the Docker container running the job
       - name: Analysing the code with pylint
         run: |

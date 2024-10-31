@@ -4,6 +4,7 @@ from pets import pets_blueprint
 
 @pytest.fixture
 def client():
+    """Configure blueprint testing"""
     pets_blueprint.config['TESTING'] = True
     with pets_blueprint.test_client() as client:
         yield client
