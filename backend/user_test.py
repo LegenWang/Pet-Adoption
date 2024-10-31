@@ -13,7 +13,6 @@ def test_register_user(test_client):
     ''' Test the registration of a new user'''
     username = "janedoe"
     password = "randompassword123"
-    
     response = test_client.post('/users/register', json={"username": username, "password": password})
     assert response.status_code == 201
     assert b"User registered successfully" in response.data

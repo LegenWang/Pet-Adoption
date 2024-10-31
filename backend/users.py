@@ -9,6 +9,7 @@ users = [
 ]
 
 @user_blueprint.route('/login', methods=['POST'])
+
 def login_users():
     ''' Log in a user by verifying their username and password '''
     credentials = request.json
