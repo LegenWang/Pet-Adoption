@@ -2,12 +2,10 @@
 from flask import Blueprint, request, jsonify
 
 user_blueprint = Blueprint('user', __name__)
-
 users = [
     {"username": "steven", "password": "1234567"},
     {"username": "james", "password": "helloworld"}
 ]
-
 @user_blueprint.route('/login', methods=['POST'])
 
 def login_users():
