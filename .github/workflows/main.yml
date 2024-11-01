@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - Develop
-      
+      - main
       - feature-main-api
       - feature-pets-api
       - feature-user-api
