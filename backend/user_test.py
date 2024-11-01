@@ -8,6 +8,7 @@ class TestAPI:
     client = None
 
     @pytest.fixture(autouse=True, scope='function')
+    
     def setup_client(self):
         """Setting up test client for all tests"""
         app = Flask(__name__)
