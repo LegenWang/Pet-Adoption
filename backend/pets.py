@@ -10,7 +10,6 @@ pets = [
 ]
 
 @pets_blueprint.route('/', methods=['GET'])
-
 def get_pets():
     """Returns all pet data"""
     return jsonify(pets), 200

@@ -33,7 +33,7 @@ class TestAPI:
         assert data['name'] == 'Buddy'
 
     def test_get_pet_not_found(self):
-        """Test retrieving a pet by ID that exists"""
+        """Test retrieving a pet by ID that doesn't exist"""
         response = self.client.get('/999')
         assert response.status_code == 404
         data = response.get_json()
