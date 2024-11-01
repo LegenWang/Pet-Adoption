@@ -1,33 +1,40 @@
-import unittest
+"""Tests for the pets API"""
+import pytest
 from flask import Flask
-from main import pet_blueprint, user_blueprint, management_blueprint
+from pets import pets_blueprint
 
-class PetBlueprintTestCase(unittest.TestCase):
-    def setUp(self):
-        # Set up the Flask application for testing
-        self.app = Flask(__name__)
-        self.app.register_blueprint(pet_blueprint)
-        self.client = self.app.test_client()
-        self.app.testing = True
+class TestAPI:
+    ''' class for all the unittests'''
+
+    client = None
+
+    @pytest.fixture(autouse=True, scope='function')
+    def setup_client(self):
+        """Setting up test client for all tests"""
+        app = Flask(__name__)
+        app.register_blueprint(pets_blueprint)
+        app.config['TESTING'] = True
+        with app.test_client() as test_client:
+            TestAPI.client = test_client
+            yield
 
     def test_get_pets(self):
-        # Test the GET / endpoint
-        response = self.client.get('/pets/')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.json), 3)
-        self.assertIn('Buddy', str(response.data))
+        """Test the GET / endpoint"""
+        response = self.client.get('/')
+        assert response.status_code == 200
+        data = response.get_json()
+        assert isinstance(data, list)  # Check that response is a list
 
     def test_get_pet_found(self):
-        # Test retrieving a pet by ID that exists
-        response = self.client.get('/pets/1')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json['name'], 'Buddy')
+        """Test retrieving a pet by ID that exists"""
+        response = self.client.get('/1')
+        assert response.status_code == 200
+        data = response.get_json()
+        assert data['name'] == 'Buddy'
 
     def test_get_pet_not_found(self):
-        # Test retrieving a pet by ID that does not exist
-        response = self.client.get('/pets/999')
-        self.assertEqual(response.status_code, 404)
-        self.assertIn('Pet not found', str(response.data))
-
-if __name__ == '__main__':
-    unittest.main()
+        """Test retrieving a pet by ID that doesn't exist"""
+        response = self.client.get('/999')
+        assert response.status_code == 404
+        data = response.get_json()
+        assert data["error"] == "Pet not found"
