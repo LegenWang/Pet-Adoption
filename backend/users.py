@@ -5,8 +5,10 @@ users = [
     {"username": "steven", "password": "1234567"},
     {"username": "james", "password": "helloworld"}
 ]
-@user_blueprint.route('/login', methods=['POST'])
 
+logged_in_users = {"steven", "james"}
+
+@user_blueprint.route('/login', methods=['POST'])
 def login_users():
     ''' Log in a user by verifying their username and password '''
     credentials = request.json
@@ -32,9 +34,8 @@ def register_user():
     user_data = request.json
     username = user_data.get("username")
 
-    for existing_user in users:
-        if existing_user["username"] == username:
-            return jsonify({"error": "Username already exists"}), 400
+    if any(existing_user["username"] == username for existing_user in users):
+        return jsonify({"error": "Username already exists"}), 400
 
     users.append({
         "username": username,
@@ -42,3 +43,15 @@ def register_user():
     })
 
     return jsonify({"message": "User registered successfully"}), 201
+
+@user_blueprint.route('/logout', methods=['POST'])
+def logout_user():
+    ''' Log out a user '''
+    credentials = request.json
+    username = credentials.get("username")
+
+    if username in logged_in_users:
+        logged_in_users.remove(username)
+        return jsonify({"message": "User logged out successfully"}), 200
+    else:
+        return jsonify({"error": "User is not logged in"}), 404
