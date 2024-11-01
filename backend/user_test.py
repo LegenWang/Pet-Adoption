@@ -1,14 +1,14 @@
 ''' Test file '''
 import pytest
-from flask import Flask
 from users import user_blueprint
+from flask import Flask
 
 class TestAPI:
     ''' class for all the unittests'''
     client = None
 
     @pytest.fixture(autouse=True, scope='function')
-    
+
     def setup_client(self):
         """Setting up test client for all tests"""
         app = Flask(__name__)
