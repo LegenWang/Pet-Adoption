@@ -22,4 +22,4 @@ def get_pet(pet_id):
     for pet in pets:
         if pet['id'] == pet_id:
             return jsonify(pet), 200
-    return jsonify({'message': 'Pet not found'}), 404
+    return jsonify({'error': 'Pet not found'}), 404

@@ -18,21 +18,23 @@ class TestAPI:
             TestAPI.client = test_client
             yield
 
-    def test_get_pets(client):
+    def test_get_pets(self):
         """Test the GET / endpoint"""
-        response = client.get('/pets')
+        response = self.client.get('/')
         assert response.status_code == 200
         data = response.get_json()
         assert isinstance(data, list)  # Check that response is a list
 
-    def test_get_pet_found(client):
+    def test_get_pet_found(self):
         """Test retrieving a pet by ID that exists"""
-        response = client.get('/pets/1')
+        response = self.client.get('/1')
         assert response.status_code == 200
         data = response.get_json()
-        assert 'Buddy' in data
+        assert data['name'] == 'Buddy'
 
-    def test_get_pet_not_found(client):
+    def test_get_pet_not_found(self):
         """Test retrieving a pet by ID that exists"""
-        response = client.get('/pets/999')
+        response = self.client.get('/999')
         assert response.status_code == 404
+        data = response.get_json()
+        assert data["error"] == "Pet not found"
