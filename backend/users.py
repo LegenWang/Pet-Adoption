@@ -24,6 +24,8 @@ def login_users():
     if user is None:
         return jsonify({"error": "Invalid username or password"}), 401
 
+    logged_in_users.add(user["username"])
+
     return jsonify({"username": user["username"]}), 200
 
 
