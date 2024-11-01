@@ -1,10 +1,10 @@
-''' Test file '''
+''' Test file for users '''
 import pytest
-from flask import Flask
 from users import user_blueprint
+from flask import Flask
 
-class TestAPI:
-    ''' class for all the unittests'''
+class TestUserAPI:
+    ''' class for all the unittests - user endpoint'''
     client = None
 
     @pytest.fixture(autouse=True, scope='function')
@@ -15,7 +15,7 @@ class TestAPI:
         app.register_blueprint(user_blueprint)
         app.config['TESTING'] = True
         with app.test_client() as test_client:
-            TestAPI.client = test_client
+            TestUserAPI.client = test_client
             yield
 
     def test_login_success(self):
@@ -42,7 +42,7 @@ class TestAPI:
         """Test successful user registration."""
         response = self.client.post('/register', json={
             "username": "jason",
-            "password": "newpassword"
+            "password": "454632324"
         })
         assert response.status_code == 201
         data = response.get_json()
@@ -52,7 +52,7 @@ class TestAPI:
         """Test user registration with an existing username."""
         self.client.post('/register', json={
             "username": "james",
-            "password": "helloworld"
+            "password": "FVERGBE4343"
         })
 
         response = self.client.post('/register', json={
