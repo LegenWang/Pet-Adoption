@@ -27,6 +27,7 @@ def login_users():
 
 
 @user_blueprint.route('/register', methods=['POST'])
+
 def register_user():
     ''' Register a new user with a unique username and password'''
     user_data = request.json
