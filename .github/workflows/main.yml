@@ -17,7 +17,7 @@ jobs:
 
     # runs-on indicates which GitHub "Runners" will run this CICD pipeline
     # For all CSE-2102 repos, just use the following line as is
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     # This next block allows you to run this ENTIRE job on different python versions
     strategy:
       matrix:
@@ -48,7 +48,7 @@ jobs:
 
     # runs-on indicates which GitHub "Runners" will run this CICD pipeline
     # For all CSE-2102 repos, just use the following line as is
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     # This next block allows you to run this ENTIRE job on different python versions
     strategy:
       matrix:
