@@ -2,6 +2,7 @@
 SQLite integration file
 It hanldles the createion and managment of the database
 """
+
 import sqlite3
 
 def initialize_database():
@@ -91,6 +92,7 @@ def add_new_pet(name, breed, age):
     """, (name, breed, age))
     connection.commit()
     connection.close()
+
 
 # Call initialize_database only on the first run of the application
 if __name__ == "__main__":
