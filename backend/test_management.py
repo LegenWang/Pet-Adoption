@@ -3,7 +3,7 @@ Unit tests for the management module, including tests for application retrieval
 and manager login functionality.
 """
 import pytest
-from main import app
+from app import app
 
 # Configure the app for testing
 @pytest.fixture
