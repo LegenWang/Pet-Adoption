@@ -55,5 +55,4 @@ def logout_user():
     if username in logged_in_users:
         logged_in_users.remove(username)
         return jsonify({"message": "User logged out successfully"}), 200
-    else:
-        return jsonify({"error": "User is not logged in"}), 404
+    return jsonify({"error": "User is not logged in"}), 404

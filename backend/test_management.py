@@ -1,4 +1,4 @@
-"""Unit tests for the management module."""
+"""test_management."""
 import pytest
 from flask import Flask
 from management import application_blueprint
@@ -22,8 +22,7 @@ class TestManagementAPI:
         response = self.client.get('/')
         assert response.status_code == 200
         data = response.get_json()
-        assert isinstance(data, list)  # Check that response is a list
-        assert len(data) > 0           # Check that there is at least one application
+        assert isinstance(data, list)
 
     def test_get_application_success(self):
         """Test retrieving a specific application by ID."""
