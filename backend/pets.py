@@ -1,24 +1,107 @@
-"""API methods related to pet information"""
-
+'''Pet API file'''
+import sqlite3
 from flask import jsonify, Blueprint
+from flasgger import Swagger
+
 pets_blueprint = Blueprint('pets', __name__)
 
-pets = [
-    {"id": 1, "name": "Buddy", "breed": "Golden Retriever", "age": "4 years", "adopted": False},
-    {"id": 2, "name": "Rex", "breed": "Bulldog", "age": "6 years", "adopted": False},
-    {"id": 3, "name": "Tucker", "breed": "Mixed", "age": "8 months", "adopted": False},
-]
+swagger = Swagger()
 
 @pets_blueprint.route('/', methods=['GET'])
 def get_pets():
-    """Returns all pet data"""
-    return jsonify(pets), 200
+    """
+    Returns all pet data from the database.
+    ---
+    tags:
+      - Pets
+    responses:
+      200:
+        description: List of pets
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              name:
+                type: string
+                example: "Buddy"
+              species:
+                type: string
+                example: "Dog"
+              age:
+                type: integer
+                example: 3
+      500:
+        description: Server error
+    """
+    conn = sqlite3.connect('petSite.db')
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM Pets")
+    pets = cursor.fetchall()
+
+    # Convert rows to a list of dictionaries
+    pet_list = [dict(pet) for pet in pets]
+    conn.close()
+    return jsonify(pet_list), 200
+
 
 @pets_blueprint.route('/<int:pet_id>', methods=['GET'])
 def get_pet(pet_id):
-    """Returns the data of one pet based on the pet_id"""
+    """
+    Returns a single pet data by ID from the database.
+    ---
+    tags:
+      - Pets
+    parameters:
+      - name: pet_id
+        in: path
+        required: true
+        type: integer
+        description: The ID of the pet to fetch
+    responses:
+      200:
+        description: Pet data
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: "Buddy"
+            species:
+              type: string
+              example: "Dog"
+            age:
+              type: integer
+              example: 3
+      404:
+        description: Pet not found
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+              example: "Pet not found"
+    """
+    conn = sqlite3.connect('petSite.db')
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
 
-    for pet in pets:
-        if pet['id'] == pet_id:
-            return jsonify(pet), 200
-    return jsonify({'error': 'Pet not found'}), 404
+    # Use pet_id instead of the undefined 'id' function
+    cursor.execute("SELECT * FROM Pets WHERE id = ?", (pet_id,))
+    pet = cursor.fetchone()
+    conn.close()
+
+    if pet is None:
+        return jsonify({'error': 'Pet not found'}), 404
+
+    # Convert the pet row to a dictionary
+    pet_data = dict(pet)
+    return jsonify(pet_data), 200
