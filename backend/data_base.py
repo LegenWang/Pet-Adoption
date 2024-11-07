@@ -44,7 +44,7 @@ def initialize_database():
     """)
 
     # Insert initial data into Users
-    cursor.execute(""" 
+    cursor.execute("""
         INSERT OR IGNORE INTO Users (username, password) 
         VALUES
             ('steven', '1234567'),
