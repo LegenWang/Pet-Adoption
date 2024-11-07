@@ -131,7 +131,7 @@ def manage_login():
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
-    cursor.execute("SELECT * FROM Managers WHERE manager_email = ? AND manager_password = ?", 
+    cursor.execute("SELECT * FROM Managers WHERE manager_email = ? AND manager_password = ?",
                    (manager_email, manager_password))
     manager = cursor.fetchone()
 
