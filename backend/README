@@ -16,19 +16,26 @@ Instructions to run the backend server directly (no Docker) on Windows
   Run this command to run the backend flask app
     python app.py
 
-API usage
-  The backend server is hosted on http://127.0.0.1:5000/
-  Go to the /pets/ route to see a list of all pets and their information
-  Use the /pets//<int:pet_id> route where pet_id is selected to see the information of one pet
-  To use the 'user' features, open Git Bash and a curl command can be used to pass parameters on the routes /users/login/ and /users/register/
-    curl -X POST http://127.0.0.1:5000/user/login -H 'Content-Type: application/json' -d '{"username":"(username)","password":"(password)"}'
-    curl -X POST http://127.0.0.1:5000/user/register -H 'Content-Type: application/json' -d '{"username":"(username)","password":"(password)"}'
-  The /users/logout/ route works similarly, but only takes the username parameter
-    curl -X POST http://127.0.0.1:5000/user/logout -H 'Content-Type: application/json' -d '{"username":"(username)"}'
-  The /application/ route will return all applications
-  The /application/<int:app_id> route will return the application with the id specified by app_id
-  To use the management login, open Git Bash and use a curl command to pass username and password parameters on the route /applications/manage_login
-    curl -X POST http://127.0.0.1:5000/application/manage_login -H 'Content-Type: application/json' -d '{"username":"(username)","password":"(password)"}'
+  API Usage
+    Base URL: The backend server is hosted on http://127.0.0.1:5000/
+    Swagger Documentation: Once the server is running, access API documentation at http://localhost:5000/apidocs
+    Endpoints
+    Pets
+    GET /pets/: Returns a list of all pets and their information.
+    GET /pets/<int:pet_id>: Returns information for a specific pet by pet_id.
+    Users
+    POST /user/login: Logs in a user with a username and password.
+    Example:
 
-  
-  
+    curl -X POST http://127.0.0.1:5000/user/login -H "Content-Type: application/json" -d '{"username":"your_username","password":"your_password"}'
+    POST /user/register: Registers a new user with a unique username and password.
+    Example:
+
+    curl -X POST http://127.0.0.1:5000/user/register -H "Content-Type: application/json" -d '{"username":"new_user","password":"new_password"}'
+    Applications
+    GET /application/: Retrieves all applications.
+    GET /application/<int:app_id>: Retrieves details of a specific application by app_id.
+    Manager Authentication
+    POST /application/manage_login: Authenticates a manager with manager_email and manager_password.
+    Example
+    curl -X POST http://127.0.0.1:5000/application/manage_login -H "Content-Type: application/json" -d '{"manager_email":"manager@example.com","manager_password":"password123"}'
