@@ -1,0 +1,34 @@
+Instructions to run backend Docker container
+  Run this command to create the image for Team46 backend
+    docker build --tag team46 .
+  Run the Docker container on port 5000 with this command
+    docker run -d -p 5000:5000 team46
+  
+Instructions to run the backend server directly (no Docker) on Windows
+  cd to the backend folder in your terminal
+  Run this command to create a virtual environment in the folder
+    py -3 -m venv venv
+  Run this command to activate the virtual environment
+    venv\Scripts\activate
+  Run these commands to install packages used
+    pip install flask
+    pip install flasgger
+  Run this command to run the backend flask app
+    python app.py
+
+API usage
+  The backend server is hosted on http://127.0.0.1:5000/
+  Go to the /pets/ route to see a list of all pets and their information
+  Use the /pets//<int:pet_id> route where pet_id is selected to see the information of one pet
+  To use the 'user' features, open Git Bash and a curl command can be used to pass parameters on the routes /users/login/ and /users/register/
+    curl -X POST http://127.0.0.1:5000/user/login -H 'Content-Type: application/json' -d '{"username":"(username)","password":"(password)"}'
+    curl -X POST http://127.0.0.1:5000/user/register -H 'Content-Type: application/json' -d '{"username":"(username)","password":"(password)"}'
+  The /users/logout/ route works similarly, but only takes the username parameter
+    curl -X POST http://127.0.0.1:5000/user/logout -H 'Content-Type: application/json' -d '{"username":"(username)"}'
+  The /application/ route will return all applications
+  The /application/<int:app_id> route will return the application with the id specified by app_id
+  To use the management login, open Git Bash and use a curl command to pass username and password parameters on the route /applications/manage_login
+    curl -X POST http://127.0.0.1:5000/application/manage_login -H 'Content-Type: application/json' -d '{"username":"(username)","password":"(password)"}'
+
+  
+  

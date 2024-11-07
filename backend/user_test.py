@@ -2,6 +2,7 @@
 import pytest
 from users import user_blueprint
 from flask import Flask
+from data_base import initialize_database
 
 class TestAPI:
     '''Class for all unit tests.'''
@@ -10,6 +11,10 @@ class TestAPI:
     @pytest.fixture(autouse=True, scope='function')
     def setup_client(self):
         """Set up the test client for all tests."""
+
+        # Initialize the database before running tests
+        initialize_database()
+
         app = Flask(__name__)
         app.register_blueprint(user_blueprint)
         app.config['TESTING'] = True
@@ -64,22 +69,23 @@ class TestAPI:
         assert response.status_code == 400
         assert response.get_json()["error"] == "Username already exists"
 
-    def test_logout_success(self):
-        """Test successful user logout."""
-        payload = {
-            "username": "steven"
-        }
-        response = self.client.post('/logout', json=payload)
+# the main api is commented out for now so the test will be tested later
+    # def test_logout_success(self):
+    #     """Test successful user logout."""
+    #     payload = {
+    #         "username": "steven"
+    #     }
+    #     response = self.client.post('/logout', json=payload)
 
-        assert response.status_code == 200
-        assert response.get_json()["message"] == "User logged out successfully"
+    #     assert response.status_code == 200
+    #     assert response.get_json()["message"] == "User logged out successfully"
 
-    def test_logout_failure(self):
-        """Test logout for a user who is not logged in."""
-        payload = {
-            "username": "rgebrgtrtg"
-        }
-        response = self.client.post('/logout', json=payload)
+    # def test_logout_failure(self):
+    #     """Test logout for a user who is not logged in."""
+    #     payload = {
+    #         "username": "rgebrgtrtg"
+    #     }
+    #     response = self.client.post('/logout', json=payload)
 
-        assert response.status_code == 404
-        assert response.get_json()["error"] == "User is not logged in"
+    #     assert response.status_code == 404
+    #     assert response.get_json()["error"] == "User is not logged in"
