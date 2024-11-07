@@ -1,3 +1,4 @@
+'''Pet API file'''
 import sqlite3
 from flask import jsonify, Blueprint
 from flasgger import Swagger

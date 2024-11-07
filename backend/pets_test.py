@@ -13,7 +13,7 @@ class TestAPI:
     @pytest.fixture(autouse=True, scope='function')
     def setup_client(self):
         """Set up the test client for all tests."""
-        
+
         # Initialize the Flask app
         app = Flask(__name__)
         app.register_blueprint(pets_blueprint)
