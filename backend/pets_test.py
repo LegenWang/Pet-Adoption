@@ -27,14 +27,14 @@ class TestAPI:
 
     def test_get_pet_found(self):
         """Test retrieving a pet by ID that exists"""
-        response_GET = self.client.get('/1')
+        response_get = self.client.get('/1')
         assert response_get.status_code == 200
         data = response_get.get_json()
         assert data['name'] == 'Buddy' # Verify that 'Buddy is in the returned data
 
     def test_get_pet_not_found(self):
         """Test retrieving a pet by ID that doesn't exist"""
-        response_GET = self.client.get('/999')
+        response_get = self.client.get('/999')
         assert response_get.status_code == 404
         data = response_get.get_json()
         assert data["error"] == "Pet not found"
