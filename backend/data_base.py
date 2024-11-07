@@ -80,6 +80,14 @@ def initialize_database():
             (1, 'admin@example.com', 'password123')
     """)
 
+    # Insert initial data into Users
+    cursor.execute("""
+        INSERT OR IGNORE INTO Users (username, password) 
+        VALUES
+            ('steven', '1234567'),
+            ('james', 'helloworld')
+    """)
+
     # Commit the changes and close the connection
     connection.commit()
     connection.close()
