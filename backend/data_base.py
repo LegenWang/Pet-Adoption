@@ -36,24 +36,23 @@ def initialize_database():
                    )
                    """)
 
-    #Create manager table
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS Managers (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            manager_email TEXT NOT NULL UNIQUE,
-            manager_password TEXT NOT NULL
-        )
-    """)
-
     # Create Pets table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Pets (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             breed TEXT NOT NULL,
-            age INTEGER NOT NULL,
-            adopted BOOLEAN DEFAULT 0
+            age INTEGER NOT NULL
         )
+    """)
+
+    # Insert initial data into Pets table if not already added
+    cursor.execute("""
+        INSERT OR IGNORE INTO Pets (id, name, breed, age) 
+        VALUES 
+            (1, 'Buddy', 'Golden Retriever', 3),
+            (2, 'Rex', 'Bulldog', 6),
+            (3, 'Tucker', 'Mixed', 1)
     """)
 
     # Insert initial data into Pets table if not already added
