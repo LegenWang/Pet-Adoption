@@ -23,6 +23,28 @@ def initialize_database():
         )
     """)
 
+    #Create application table
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS Applications (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_name TEXT NOT NULL UNIQUE,
+            user_age INTEGER,
+            user_occupation TEXT NOT NULL,
+            user_salary INTEGER,
+            pet_name TEXT NOT NULL,
+            pet_breed TEXT NOT NULL
+                   )
+                   """)
+
+    #Create manager table
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS Managers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            manager_email TEXT NOT NULL UNIQUE,
+            manager_password TEXT NOT NULL
+        )
+    """)
+
     # Create Pets table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Pets (
@@ -41,6 +63,21 @@ def initialize_database():
             ('Buddy', 'Golden Retriever', 3),
             ('Rex', 'Bulldog', 6),
             ('Tucker', 'Mixed', 1)
+    """)
+
+    #Insert initial data into application table
+    cursor.execute("""
+        INSERT OR IGNORE INTO Applications (id, user_name, user_age, user_occupation, user_salary, pet_name, pet_breed) 
+        VALUES 
+            (1, 'Alice', 30, 'Engineer', 80000, 'Buddy', 'Golden Retriever'),
+            (2, 'Bob', 40, 'Teacher', 50000, 'Rex', 'Bulldog')
+    """)
+
+    #Insert initial data into manager table
+    cursor.execute("""
+        INSERT OR IGNORE INTO Managers (id, manager_email, manager_password) 
+        VALUES 
+            (1, 'admin@example.com', 'password123')
     """)
 
     # Commit the changes and close the connection

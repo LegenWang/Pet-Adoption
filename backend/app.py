@@ -4,15 +4,15 @@ from flask import Flask
 from pets import pets_blueprint
 from users import user_blueprint
 from management import application_blueprint
-app = Flask(__name__)
+from flasgger import Swagger
 
+app = Flask(__name__)
+swagger = Swagger(app)
 
 # Register blueprints
 app.register_blueprint(pets_blueprint, url_prefix='/pets')
 app.register_blueprint(user_blueprint, url_prefix='/user')
 app.register_blueprint(application_blueprint, url_prefix='/application')
-
-
 
 @app.route('/')
 def index():
