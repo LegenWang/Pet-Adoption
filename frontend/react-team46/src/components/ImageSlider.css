@@ -1,0 +1,55 @@
+.image-slider {
+    margin-top: 100px;
+    left: 300px;
+    position:relative;
+    width: 600px;
+    height: 600px; /* Set height based on your images */
+    overflow: hidden;
+  }
+  
+  .slider-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .slider-item img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .slider-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  
+  .arrow-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    margin-bottom: 100px;
+  }
+  
+  .arrow-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .left-arrow {
+    margin-left: 10px;
+  }
+  
+  .right-arrow {
+    margin-right: 10px;
+  }
+  
