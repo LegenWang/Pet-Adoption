@@ -5,9 +5,11 @@ import './App.css'
 import Navbar from './components/Navbar';
 import ImageSlider from './components/ImageSlider';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './components/HomePage';
 import PetsPage from './components/PetsPage';
 import LoginPage from './components/LoginPage';
+import './components/Navbar.css'
 
 function App() {
   const [count, setCount] = useState(0)

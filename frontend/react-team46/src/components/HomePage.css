@@ -1,27 +1,10 @@
-.container {
-    text-align: center;
-    margin-top: 20px;
-  }
-#aboutus_title{
-  font-family: 'Times New Roman';
-  font-size: 5rem;
-    margin-top: 20px;   /* Moves it down */
-    margin-left: 30px;  /* Moves it right */
-    margin-bottom: 10px; /* Moves it up from the element below */
-    margin-right: 10px; /* Moves it left from the element to its right */
-    position: relative;
-
-  }
-p{
-  word-wrap: break-word;
-  display: block;
-  position: fixed;
-  color: #161616;
-  text-align: left;
-  font-family: 'Times New Roman';
-  font-size: 2rem;
-  font-weight: normal;
-  line-height: 1.5;
-  position: relative;
-  width: 100%;
+.aboutus{
+    border: 4px solid;
+    padding: 1rem;
+    padding-bottom: 3rem;
+    margin-top: 1rem;
+}
+.ImageInfo{
+    border: 4px solid;
+    padding: 1rem;
 }
