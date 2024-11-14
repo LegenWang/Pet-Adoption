@@ -28,14 +28,14 @@ jobs:
           key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-node-
-
       - name: Install dependencies
         working-directory: ./frontend
         run: npm ci
 
-      - name: Lint frontend code with ESLint
-        working-directory: ./frontend
-        run: npx eslint "**/*.{ts,tsx,js,jsx}"
+      - name: Lint frontend code with ESLint (inline config)
+        working-directory: ./react-team46
+        run: |
+          npx eslint "**/*.{ts,tsx,js,jsx}" --env browser --env es2021 --parser "@typescript-eslint/parser" --plugin "@typescript-eslint" --extends "eslint:recommended" --extends "plugin:@typescript-eslint/recommended"
 
       - name: Check code formatting with Prettier
         working-directory: ./frontend
