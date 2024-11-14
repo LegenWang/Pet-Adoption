@@ -22,6 +22,8 @@ h1 {
 .status-container {
     margin-top: 20px;
     text-align: left;
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
 }
 
 .status-item {
@@ -30,10 +32,17 @@ h1 {
     margin: 10px 0;
 }
 
-.status-item label {
+.status-item label,
+.status-item a {
     flex-grow: 1;
     font-size: 18px;
     color: #333;
+    text-decoration: none; /* Remove underline from the link */
+}
+
+.status-item a:hover {
+    text-decoration: underline; /* Add underline on hover to indicate clickability */
+    color: #007bff; /* Change color on hover */
 }
 
 .status-item input[type="checkbox"] {
