@@ -29,18 +29,18 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-node-
       - name: Install dependencies
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: npm ci
 
       - name: Lint frontend code with ESLint (inline config)
-        working-directory: ./react-team46
+        working-directory: ./frontend/react-team46
         run: |
-          npx eslint "**/*.{ts,tsx,js,jsx}" --env browser --env es2021 --parser "@typescript-eslint/parser" --plugin "@typescript-eslint" --extends "eslint:recommended" --extends "plugin:@typescript-eslint/recommended"
+          npx eslint "**/*.{ts,tsx,js,jsx}" --env browser --env es2021 --parser "@typescript-eslint/parser" --plugin "@typescript-eslint" --extends "eslint:recommended,plugin:@typescript-eslint/recommended"
 
       - name: Check code formatting with Prettier
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: npx prettier --check "**/*.{ts,tsx,js,jsx,json,css,md}"
 
       - name: TypeScript check
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: npx tsc --noEmit
