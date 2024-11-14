@@ -1,29 +1,50 @@
-// src/HomePage.js
+// src/components/LoginPage.tsx
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './LoginPage.css';
 
-function LoginPage() {
-  
+const LoginPage: React.FC = () => {
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const navigate = useNavigate();
 
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        navigate('/application');
+    };
 
-
-  return (
-    <div style={styles.container}>
-      <h1>Login 1</h1>
-
-    </div>
-  );
-}
-
-const styles = {
-  container: {
-    textAlign: 'center',
-    marginTop: '20px',
-  },
-  button: {
-    padding: '10px 20px',
-    fontSize: '16px',
-    cursor: 'pointer',
-  },
+    return (
+        <div className="login-container">
+            <div className="login-card">
+                <h2 className="login-title">Log In</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="form-input"
+                            placeholder="Enter your email"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="form-input"
+                            placeholder="Enter your password"
+                        />
+                    </div>
+                    <button type="submit" className="btn">Sign In</button>
+                </form>
+            </div>
+        </div>
+    );
 };
 
 export default LoginPage;

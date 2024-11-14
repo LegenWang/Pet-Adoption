@@ -1,0 +1,104 @@
+/* Full height for body and html */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.application-container {
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: flex-start;  /* Align to the top of the container */
+  height: 100vh;  /* Full viewport height */
+  width: 100vw;
+  overflow: auto;  /* Allow scroll */
+  padding: 2rem;
+}
+
+/* Application card styling */
+.application-card {
+  width: 90%;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0.5rem 0.75rem;
+  box-sizing: border-box;  /* Ensures padding doesn't affect the width */
+  overflow-y: auto;  /* scrollable if overflows */
+  height: 100%;  /* Take up full height of the container */
+  max-height: 90vh;  /*  90% of viewport height */
+}
+
+/* Form title styling */
+.application-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* Input styling */
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Button styling */
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #131313;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #525354;
+}
+
+/* Scrollbar styling */
+.application-container::-webkit-scrollbar {
+  width: 12px; /* Adjust scrollbar width */
+}
+
+.application-container::-webkit-scrollbar-track {
+  background: #f1f1f1;  /* Light grey background for track */
+  border-radius: 10px;
+}
+
+.application-container::-webkit-scrollbar-thumb {
+  background: #888;  /* Darker thumb */
+  border-radius: 10px;
+}
+
+.application-container::-webkit-scrollbar-thumb:hover {
+  background: #555;  /* Darker thumb on hover */
+}
+
+/* Apply the same scrollbar styles to the application card */
+.application-card::-webkit-scrollbar {
+  width: 12px;
+}
+
+.application-card::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.application-card::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.application-card::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
