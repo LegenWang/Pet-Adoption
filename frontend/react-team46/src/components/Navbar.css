@@ -1,43 +1,43 @@
 /* Navbar styling */
 .navbar {
-    background-color: #161616; /* Light background color */
-    padding: 3rem 2rem; /* Adjust navbar padding */
+  background-color: #161616; /* Light background color */
+  padding: 3rem 2rem; /* Adjust navbar padding */
+}
+
+/* Navbar brand styling */
+.navbar .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff; /* Bootstrap primary color */
+  padding-left: 2rem;
+}
+
+.navbar .navbar-brand:hover {
+  color: #ff00d4; /* Darker color on hover */
+}
+
+/* Navbar items styling */
+.navbar-nav .nav-item .nav-link {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff; /* Default link color */
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding: 1rem 1rem; /* Adjust padding for items */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #ff00d4; /* Change link color on hover */
+}
+
+/* Styling for navbar collapse */
+.collapse.navbar-collapse {
+  justify-content: flex-end; /* Align the navbar items to the right */
+}
+
+/* Optional: For mobile responsiveness */
+@media (max-width: 767px) {
+  .navbar-nav {
+    text-align: center; /* Center items on small screens */
   }
-  
-  /* Navbar brand styling */
-  .navbar .navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff; /* Bootstrap primary color */
-    padding-left: 2rem;
-  }
-  
-  .navbar .navbar-brand:hover {
-    color: #ff00d4; /* Darker color on hover */
-  }
-  
-  /* Navbar items styling */
-  .navbar-nav .nav-item .nav-link {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffffff; /* Default link color */
-    margin-left: 2rem;
-    margin-right: 2rem;
-    padding: 1rem 1rem; /* Adjust padding for items */
-  }
-  
-  .navbar-nav .nav-item .nav-link:hover {
-    color: #ff00d4; /* Change link color on hover */
-  }
-  
-  /* Styling for navbar collapse */
-  .collapse.navbar-collapse {
-    justify-content: flex-end; /* Align the navbar items to the right */
-  }
-  
-  /* Optional: For mobile responsiveness */
-  @media (max-width: 767px) {
-    .navbar-nav {
-      text-align: center; /* Center items on small screens */
-    }
-  }
+}
