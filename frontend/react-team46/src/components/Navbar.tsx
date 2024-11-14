@@ -1,28 +1,37 @@
-// src/components/Navbar.tsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css'; // Optional: for styling
+import React from "react";
+
+import "./Navbar.css";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/">Pet Adoption</Link>
+    <nav className="navbar navbar-expand-lg navbar-light container-fluid">
+      <a className="navbar-brand" href="/">
+        Pet Application
+      </a>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <a className="nav-link" href="/pets">
+              pets
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/login">
+              login
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/status">
+              status
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/application">
+              application
+            </a>
+          </li>
+        </ul>
       </div>
-      <ul className="navbar-links">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/pets">Available Pets</Link>
-        </li>
-        <li>
-          <Link to="/login">Login/Apply</Link>
-        </li>
-        <li>
-          <Link to="/Status">Status</Link>
-        </li>
-      </ul>
     </nav>
   );
 };

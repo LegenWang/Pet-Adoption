@@ -10,6 +10,9 @@ on:
       - feature-pets-api
       - feature-user-api
       - feature-management-api
+      - feature-db
+      - feature-dockerize
+      - my_db
 
 jobs:
   # Each job runs in parallel
@@ -74,4 +77,4 @@ jobs:
       # Run pytest on your pulled codebase
       - name: Test with pytest
         run: |
-          pytest backend
+          pytest ./backend
