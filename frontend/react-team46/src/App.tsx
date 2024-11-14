@@ -6,7 +6,7 @@ import HomePage from "./components/HomePage";
 import PetsPage from "./components/PetsPage";
 import LoginPage from "./components/LoginPage";
 import ApplicationPage from "./components/ApplicationPage";
-import ApplicationStatus from './components/AppStatus';
+import ApplicationStatus from "./components/AppStatus";
 import "./components/Navbar.css";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/pets" element={<PetsPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/status" element={<StatusPage />} />
+          <Route path="/status" element={<ApplicationStatus />} />
           <Route path="/application" element={<ApplicationPage />} />
         </Routes>
       </div>
