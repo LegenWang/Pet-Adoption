@@ -1,6 +1,6 @@
-import React from 'react';
-import { Carousel } from 'react-bootstrap'; // Make sure react-bootstrap is installed
-import './ImageSlider.css'
+import React from "react";
+import { Carousel } from "react-bootstrap"; // Make sure react-bootstrap is installed
+import "./ImageSlider.css";
 
 const BootstrapCarousel = () => {
   return (
