@@ -40,7 +40,7 @@ jobs:
 
       - name: Lint frontend code with ESLint
         working-directory: ./frontend
-        run: npx eslint . --ext .ts,.tsx,.js,.jsx
+        run: npx eslint . .ts,.tsx,.js,.jsx
 
       - name: Check code formatting with Prettier
         working-directory: ./frontend
