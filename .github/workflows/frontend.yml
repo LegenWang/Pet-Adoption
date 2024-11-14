@@ -29,7 +29,6 @@ jobs:
           key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-node-
-
       - name: Install dependencies
         working-directory: ./frontend/react-team46
         run: npm ci
@@ -38,9 +37,11 @@ jobs:
         run: |
           npm install eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-react --save-dev
 
+
       - name: Lint frontend code with ESLint
         working-directory: ./frontend/react-team46
         run: npx eslint
+
 
       - name: Check code formatting with Prettier
         working-directory: ./frontend/react-team46
