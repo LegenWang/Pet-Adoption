@@ -1,61 +1,48 @@
-/* Adjust the size of the carousel container */
 .carousel {
-  width: 40%; /* Set the width to a percentage of the parent container */
-  max-width: 100%; /* Set a maximum width */
-  margin-right: 50%; /* Center the carousel horizontally */
+  width: 40%; 
+  max-width: 100%;
+  margin-right: 50%;
   border: 3px solid;
   left: 25%;
 }
 
 .carousel-inner {
-  height: 100%; /* Set the height of the carousel itself */
+  height: 100%;
 }
 
-/* Adjust the size of the carousel */
 .carousel-item img {
-  width: 100%; /* Ensures the image fills the container */
-  height: 100%; /* Set a fixed height for the carousel slides */
-  object-fit: cover; /* Ensures the image covers the slide without distorting */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Customize the carousel caption */
 .carousel-caption {
   position: absolute;
   width: 50%;
-  bottom: 20px; /* Adjust the position of the caption */
+  bottom: 20px;
   left: 50%;
-  transform: translateX(-50%); /* Center the caption horizontally */
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* Add a dark background to the caption */
-  color: white; /* Change the text color */
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
   padding: 10px;
   border-radius: 5px;
 }
 
-/* Customize carousel control buttons (Previous/Next) */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: #000000; /* Set the control button icon color */
+  background-color: #000000;
 }
 
-/* Customize the carousel controls on hover */
-
-/* Customize the carousel indicators (dots) */
 .carousel-indicators li {
-  background-color: #007bff; /* Set the color of the dots */
+  background-color: #007bff;
 }
 
 .carousel-indicators .active {
-  background-color: #0056b3; /* Set the active dot color */
+  background-color: #0056b3;
 }
 
-/* Make carousel responsive on smaller screens */
 @media (max-width: 767px) {
   .carousel-item img {
-    height: 300px; /* Adjust the height for smaller screens */
+    height: 300px;
   }
 }
