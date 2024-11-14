@@ -1,0 +1,26 @@
+body {
+  background-color: rgb(213, 213, 213);
+}
+.aboutus {
+  position: relative;
+  border: 4px solid rgb(117, 117, 117);
+  border-radius: 60px;
+  padding: 1rem;
+  padding-bottom: 3rem;
+  margin-top: 1rem;
+  left: -3%;
+  margin-bottom: 1rem;
+}
+.aboutus_body {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgb(117, 117, 117);
+}
+.aboutus_title {
+  position: relative;
+  color: rgb(117, 117, 117);
+  font-weight: bolder;
+  margin-bottom: 10px;
+  text-align: center;
+}
