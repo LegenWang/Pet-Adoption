@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import './PetDetail.css'; // Import the custom CSS
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import "./PetDetail.css"; // Import the custom CSS
 
 interface Pet {
   id: number;
@@ -35,12 +35,20 @@ const PetDetail = () => {
     <div className="pet-detail-container">
       <h1>{pet.name}</h1>
       <img src={`../../public/images/pets/${pet.id}.jpg`} alt={pet.name} />
-      <p><strong>Breed:</strong> {pet.breed}</p>
-      <p><strong>Age:</strong> {pet.age}</p>
-      <p className={pet.adopted ? "adopted-status" : "available-status"}>
-        {pet.adopted ? "This pet is adopted" : "This pet is available for adoption"}
+      <p>
+        <strong>Breed:</strong> {pet.breed}
       </p>
-      <Link to="/" className="back-button">Back to Pet List</Link>
+      <p>
+        <strong>Age:</strong> {pet.age}
+      </p>
+      <p className={pet.adopted ? "adopted-status" : "available-status"}>
+        {pet.adopted
+          ? "This pet is adopted"
+          : "This pet is available for adoption"}
+      </p>
+      <Link to="/" className="back-button">
+        Back to Pet List
+      </Link>
     </div>
   );
 };
