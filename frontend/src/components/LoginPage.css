@@ -1,0 +1,71 @@
+/* Make sure the body takes up full screen height */
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+/* Center the entire login card */
+.login-container {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    min-height: 100vh;            /* Take full viewport height */
+    width: 100vw;
+    background-color: #f2f4f6;
+}
+
+/* Login card styling */
+.login-card {
+    width: 36%;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;  /* Ensures padding is inside the width */
+}
+
+/* Form title styling */
+.login-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Input styling */
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    background-color: white;
+    color: #222;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #333;
+}
+
+/* Button styling */
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #333;
+    color: #fff;
+}
