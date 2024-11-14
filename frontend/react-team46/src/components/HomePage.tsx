@@ -9,9 +9,9 @@ function HomePage() {
 
   return (
     <div className = "container">
-      <div className = 'ImageInfo'>
+     
       <ImageSlider/>
-      </div>
+
 
       <div className = "aboutus">
         <h1 className = "aboutus_title">
@@ -28,6 +28,7 @@ Welcome to Pet Adoption, the premier online pet adoption platform dedicated to c
         </p1>
 
       </div>
+      <br/>
     </div>
   );
 }

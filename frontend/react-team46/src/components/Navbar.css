@@ -19,6 +19,7 @@
   /* Navbar items styling */
   .navbar-nav .nav-item .nav-link {
     font-size: 2rem;
+    font-weight: bold;
     color: #ffffff; /* Default link color */
     margin-left: 2rem;
     margin-right: 2rem;

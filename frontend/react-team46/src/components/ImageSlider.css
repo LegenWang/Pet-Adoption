@@ -1,10 +1,10 @@
 /* Adjust the size of the carousel container */
 .carousel {
-    width: 30%; /* Set the width to a percentage of the parent container */
-    max-width: 50%; /* Set a maximum width */
+    width: 40%; /* Set the width to a percentage of the parent container */
+    max-width: 100%; /* Set a maximum width */
     margin-right: 50%; /* Center the carousel horizontally */
     border: 3px solid;
-    
+    left: 25%;
   }
   
   .carousel-inner {
