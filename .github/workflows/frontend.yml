@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - Develop
+      - Develop2
       - main
       - feature-frontend-berek
       - feature-gabe
@@ -32,10 +33,14 @@ jobs:
       - name: Install dependencies
         working-directory: ./frontend
         run: npm ci
+      - name: Install ESLint and Prettier
+        working-directory: ./frontend
+        run: |
+          npm install eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-react --save-dev
 
       - name: Lint frontend code with ESLint
         working-directory: ./frontend
-        run: npx eslint "**/*.{ts,tsx,js,jsx}"
+        run: npx eslint
 
       - name: Check code formatting with Prettier
         working-directory: ./frontend
