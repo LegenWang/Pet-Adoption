@@ -30,22 +30,22 @@ jobs:
             ${{ runner.OS }}-node-
 
       - name: Install dependencies
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: npm ci
 
       - name: Install ESLint and Prettier
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: |
           npm install eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-react --save-dev
 
       - name: Lint frontend code with ESLint
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: npx eslint . .ts,.tsx,.js,.jsx
 
       - name: Check code formatting with Prettier
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: npx prettier --check .
 
       - name: TypeScript check
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: npx tsc --noEmit
