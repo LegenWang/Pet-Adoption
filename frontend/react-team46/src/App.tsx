@@ -6,7 +6,7 @@ import HomePage from "./components/HomePage";
 import PetsPage from "./components/PetsPage";
 import LoginPage from "./components/LoginPage";
 import ApplicationPage from "./components/ApplicationPage";
-import StatusPage from "./components/StatusPage";
+import ApplicationStatus from './components/AppStatus';
 import "./components/Navbar.css";
 
 function App() {
