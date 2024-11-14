@@ -1,0 +1,51 @@
+name: Frontend Linting
+
+on:
+  push:
+    branches:
+      - Develop
+      - main
+      - feature-frontend-berek
+      - feature-gabe
+
+jobs:
+  lint_job:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Install ESLint and Prettier
+        working-directory: ./frontend
+        run: |
+          npm install eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-react --save-dev
+
+      - name: Lint frontend code with ESLint
+        working-directory: ./frontend
+        run: npx eslint . --ext .ts,.tsx,.js,.jsx
+
+      - name: Check code formatting with Prettier
+        working-directory: ./frontend
+        run: npx prettier --check .
+
+      - name: TypeScript check
+        working-directory: ./frontend
+        run: npx tsc --noEmit
