@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - Develop
+      - Develop2
       - main
       - feature-frontend-berek
       - feature-gabe
@@ -28,24 +29,24 @@ jobs:
           key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-node-
-
       - name: Install dependencies
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: npm ci
-
       - name: Install ESLint and Prettier
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: |
           npm install eslint prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-react --save-dev
 
+
       - name: Lint frontend code with ESLint
-        working-directory: ./frontend
-        run: npx eslint . --ext .ts,.tsx,.js,.jsx
+        working-directory: ./frontend/react-team46
+        run: npx eslint
+
 
       - name: Check code formatting with Prettier
-        working-directory: ./frontend
-        run: npx prettier --check .
+        working-directory: ./frontend/react-team46
+        run: npx prettier --check "**/*.{ts,tsx,js,jsx,json,css,md}"
 
       - name: TypeScript check
-        working-directory: ./frontend
+        working-directory: ./frontend/react-team46
         run: npx tsc --noEmit
