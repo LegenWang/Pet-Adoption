@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./components/HomePage";
-import PetsPage from "./components/PetsPage";
+import PetDetail from "./components/PetDetail";
 import LoginPage from "./components/LoginPage";
 import ApplicationPage from "./components/ApplicationPage";
 import ApplicationStatus from "./components/AppStatus";
@@ -17,7 +17,7 @@ function App() {
         {/* Other components and routes go here */}
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/pets" element={<PetsPage />} />
+          <Route path="/pets" element={<PetDetail/>} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/status" element={<ApplicationStatus />} />
           <Route path="/application" element={<ApplicationPage />} />

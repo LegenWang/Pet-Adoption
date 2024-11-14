@@ -19,7 +19,7 @@ const ApplicationStatus: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container">
+    <div className="container_app">
       <h1>Congratulations! You’ve successfully submitted the application.</h1>
       <p>Your application status is below:</p>
 
