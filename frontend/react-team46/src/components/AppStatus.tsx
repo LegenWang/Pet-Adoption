@@ -1,14 +1,18 @@
 // src/HomePage.js
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './AppStatus.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./AppStatus.css";
 
 const statusItems = [
-  { label: 'Received', checked: true },
-  { label: 'Under Review', checked: true },
-  { label: 'Additional Information Required', checked: true },
-  { label: 'In Progress', checked: true },
-  { label: 'Completed, click here to see the result', checked: true, isLink: true },
+  { label: "Received", checked: true },
+  { label: "Under Review", checked: true },
+  { label: "Additional Information Required", checked: true },
+  { label: "In Progress", checked: true },
+  {
+    label: "Completed, click here to see the result",
+    checked: true,
+    isLink: true,
+  },
 ];
 
 const ApplicationStatus: React.FC = () => {
@@ -38,7 +42,7 @@ const ApplicationStatus: React.FC = () => {
         ))}
       </ul>
 
-      <button onClick={() => navigate('/')}>Cancel application</button>
+      <button onClick={() => navigate("/")}>Cancel application</button>
     </div>
   );
 };
