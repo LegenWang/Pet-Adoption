@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import PetsPage from './components/PetsPage';
 import LoginPage from './components/LoginPage';
+import ApplicationStatus from './components/AppStatus';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<HomePage/>} />
         <Route path="/pets" element={<PetsPage/>} />
         <Route path="/Login" element={<LoginPage/>} />
+        <Route path="/Status" element={<ApplicationStatus/>} />
       </Routes>
     </div>
   </Router>
