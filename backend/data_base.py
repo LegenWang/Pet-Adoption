@@ -46,6 +46,15 @@ def initialize_database():
         )
     """)
 
+    # Create Managers table
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS Managers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            manager_email TEXT NOT NULL UNIQUE,
+            manager_password TEXT NOT NULL
+    )
+    """)
+
     # Insert initial data into Pets table if not already added
     cursor.execute("""
         INSERT OR IGNORE INTO Pets (id, name, breed, age) 
