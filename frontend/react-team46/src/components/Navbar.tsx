@@ -12,22 +12,22 @@ const Navbar: React.FC = () => {
         <ul className="navbar-nav">
           <li className="nav-item">
             <a className="nav-link" href="/pets">
-              pets
+              Pets
             </a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/login">
-              login
+              Login
             </a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/status">
-              status
+              Status
             </a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/application">
-              application
+              Application
             </a>
           </li>
         </ul>
