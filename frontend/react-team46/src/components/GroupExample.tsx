@@ -1,17 +1,17 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
+import './list.css'; // Ensure your CSS file is imported
 
 const GroupExample = ({ pets }) => {
   return (
-    <Row>
+    <Row className="card-group-sm">
       {pets.map((pet) => (
         <Col key={pet.id} xs={12} sm={6} md={4}>
           <Card>
-            <Card.Img variant="top" src={`../../public/images/pets/${pet.id}.jpg`} />
+          <Card.Img variant="top" src={`http://127.0.0.1:5000/${pet.image_url}`} />
             <Card.Body>
               <Card.Title>{pet.name}</Card.Title>
               <Card.Text>
