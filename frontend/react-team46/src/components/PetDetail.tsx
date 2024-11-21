@@ -14,12 +14,12 @@ interface Pet {
 const PetDetail = () => {
   const { id } = useParams(); // Extract the pet id from URL parameters
   const [pet, setPet] = useState<Pet | null>(null);
+  const [pets, setPets] = useState<Pet[]>([]); // State for all pets
 
   useEffect(() => {
     async function fetchPetDetails() {
       if (id) {
         try {
-          // Use the id from useParams to fetch pet details
           const response = await fetch(`http://127.0.0.1:5000/pets/${id}`);
           const data = await response.json();
           setPet(data);
@@ -28,14 +28,28 @@ const PetDetail = () => {
         }
       }
     }
+
+    async function fetchAllPets() {
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/pets`);
+        const data = await response.json();
+        setPets(data);
+      } catch (error) {
+        console.error("Error fetching pets:", error);
+      }
+    }
+
     fetchPetDetails();
+    fetchAllPets();
   }, [id]); // Fetch data whenever id changes
 
-  if (!pet) return <div>
-      <GroupExample/>
-
-
-  </div>; // Loading state
+  if (!pet) {
+    return (
+      <div>
+        <GroupExample pets={pets} /> {/* Pass pets data */}
+      </div>
+    );
+  }
 
   return (
     <div className="pet-detail-container">
