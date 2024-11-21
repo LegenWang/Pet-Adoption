@@ -11,13 +11,14 @@ interface Pet {
 }
 
 const PetDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Extract the pet id from URL parameters
   const [pet, setPet] = useState<Pet | null>(null);
 
   useEffect(() => {
     async function fetchPetDetails() {
       if (id) {
         try {
+          // Use the id from useParams to fetch pet details
           const response = await fetch(`http://127.0.0.1:5000/pets/${id}`);
           const data = await response.json();
           setPet(data);
@@ -27,7 +28,7 @@ const PetDetail = () => {
       }
     }
     fetchPetDetails();
-  }, [id]);
+  }, [id]); // Fetch data whenever id changes
 
   if (!pet) return <div>Loading...</div>; // Loading state
 
@@ -52,4 +53,5 @@ const PetDetail = () => {
     </div>
   );
 };
+
 export default PetDetail;
