@@ -18,6 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/pets" element={<PetDetail />} />
+          <Route path="/pets/:id" element={<PetDetail />} />
+
           <Route path="/login" element={<LoginPage />} />
           <Route path="/status" element={<ApplicationStatus />} />
           <Route path="/application" element={<ApplicationPage />} />
