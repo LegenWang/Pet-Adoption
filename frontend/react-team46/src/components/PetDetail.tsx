@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./PetDetail.css"; // Import the custom CSS
+import GroupExample from "./GroupExample";
 
 interface Pet {
   id: number;
@@ -30,7 +31,11 @@ const PetDetail = () => {
     fetchPetDetails();
   }, [id]); // Fetch data whenever id changes
 
-  if (!pet) return <div>Loading...</div>; // Loading state
+  if (!pet) return <div>
+      <GroupExample/>
+
+
+  </div>; // Loading state
 
   return (
     <div className="pet-detail-container">

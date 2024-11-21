@@ -11,10 +11,10 @@ app = Flask(__name__)
 swagger = Swagger(app)
 
 # Enable CORS for all routes (allowing all origins by default)
-CORS(app)  # This enables CORS globally
+# CORS(app)  # This enables CORS globally
 
 # If you want to restrict to specific origins, use the following:
-# CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 
 # Register blueprints
 app.register_blueprint(pets_blueprint, url_prefix='/pets')
