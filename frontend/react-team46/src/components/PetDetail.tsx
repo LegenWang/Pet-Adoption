@@ -54,7 +54,7 @@ const PetDetail = () => {
   return (
     <div className="pet-detail-container">
       <h1>{pet.name}</h1>
-      <img src={`../../public/images/pets/${pet.id}.jpg`} alt={pet.name} />
+      <img src={`http://127.0.0.1:5000/${pet.image_url}`} alt={pet.name} />
       <p>
         <strong>Breed:</strong> {pet.breed}
       </p>
