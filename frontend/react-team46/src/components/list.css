@@ -1,0 +1,12 @@
+/* Add this to your CSS file */
+.card-group-sm {
+    max-width: 50%;
+  }
+  
+  .card-group-sm .card {
+    left:150%
+  }
+  
+  .card-group-sm .card img {
+
+  }

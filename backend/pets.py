@@ -10,7 +10,7 @@ swagger = Swagger()
 @pets_blueprint.route('/', methods=['GET'])
 def get_pets():
     """
-    Returns all pet data from the database.
+    Returns all pet data from the database, including image URLs.
     ---
     tags:
       - Pets
@@ -34,6 +34,9 @@ def get_pets():
               age:
                 type: integer
                 example: 3
+              image_url:
+                type: string
+                example: "/static/images/pets/1.jpg"
       500:
         description: Server error
     """
@@ -44,8 +47,11 @@ def get_pets():
     cursor.execute("SELECT * FROM Pets")
     pets = cursor.fetchall()
 
-    # Convert rows to a list of dictionaries
-    pet_list = [dict(pet) for pet in pets]
+    # Convert rows to a list of dictionaries and add the image URL
+    pet_list = [
+        {**dict(pet), "image_url": f"/static/images/pets/{pet['imagepath']}"}
+        for pet in pets
+    ]
     conn.close()
     return jsonify(pet_list), 200
 
@@ -53,7 +59,7 @@ def get_pets():
 @pets_blueprint.route('/<int:pet_id>', methods=['GET'])
 def get_pet(pet_id):
     """
-    Returns a single pet data by ID from the database.
+    Returns a single pet data by ID from the database, including the image URL.
     ---
     tags:
       - Pets
@@ -81,6 +87,9 @@ def get_pet(pet_id):
             age:
               type: integer
               example: 3
+            image_url:
+              type: string
+              example: "/static/images/pets/1.jpg"
       404:
         description: Pet not found
         schema:
@@ -94,7 +103,6 @@ def get_pet(pet_id):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    # Use pet_id instead of the undefined 'id' function
     cursor.execute("SELECT * FROM Pets WHERE id = ?", (pet_id,))
     pet = cursor.fetchone()
     conn.close()
@@ -102,6 +110,7 @@ def get_pet(pet_id):
     if pet is None:
         return jsonify({'error': 'Pet not found'}), 404
 
-    # Convert the pet row to a dictionary
+    # Convert the pet row to a dictionary and add the image URL
     pet_data = dict(pet)
+    pet_data["image_url"] = f"/static/images/pets/{pet['imagepath']}"
     return jsonify(pet_data), 200

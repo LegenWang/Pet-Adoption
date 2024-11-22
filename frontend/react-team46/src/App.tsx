@@ -13,6 +13,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+
       <div className="app-content">
         {/* Other components and routes go here */}
         <Routes>
