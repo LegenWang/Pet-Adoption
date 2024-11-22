@@ -1,17 +1,27 @@
 .navbar {
   background-color: #161616;
-  padding: 3rem 2rem;
+  padding: 3rem 3rem;
+  display: flex; /* Enable flexbox layout */
+  justify-content: space-between; /* Space out elements evenly */
+  align-items: center; /* Align items vertically */
+  width: 100%; /* Ensure the navbar takes up the full width */
 }
 
 .navbar .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #ffffff;
-  padding-left: 2rem;
+  padding-left: 1rem;
 }
 
 .navbar .navbar-brand:hover {
-  color: #ff00d4;
+  color: #00682d;
+}
+
+.navbar-nav {
+  display: flex; /* Use flexbox for the navbar items */
+  justify-content: flex-end; /* Align navbar items to the right */
+  width: 100%; /* Ensure navbar items stretch to fill available space */
 }
 
 .navbar-nav .nav-item .nav-link {
@@ -24,7 +34,7 @@
 }
 
 .navbar-nav .nav-item .nav-link:hover {
-  color: #ff00d4;
+  color: #00682d;
 }
 
 .collapse.navbar-collapse {
@@ -34,5 +44,6 @@
 @media (max-width: 767px) {
   .navbar-nav {
     text-align: center;
+    width: 100%; /* Ensure navbar items take up full width on smaller screens */
   }
 }

@@ -7,12 +7,16 @@ import PetDetail from "./components/PetDetail";
 import LoginPage from "./components/LoginPage";
 import ApplicationPage from "./components/ApplicationPage";
 import ApplicationStatus from "./components/AppStatus";
+import ResultPage from "./components/ResultPage";
 import "./components/Navbar.css";
+import ApplicationViewPage from "./components/ApplicationViewPage";
+import ApplicationDetailPage from "./components/ApplicationDetailPage";
 
 function App() {
   return (
     <Router>
       <Navbar />
+
       <div className="app-content">
         {/* Other components and routes go here */}
         <Routes>
@@ -23,6 +27,9 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/status" element={<ApplicationStatus />} />
           <Route path="/application" element={<ApplicationPage />} />
+          <Route path="/result" element={<ResultPage />} />
+          <Route path="/application-view" element={<ApplicationViewPage />} />
+          <Route path="/applications/:id" element={<ApplicationDetailPage />} />
         </Routes>
       </div>
     </Router>

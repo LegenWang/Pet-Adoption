@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./PetDetail.css"; // Import the custom CSS
+import GroupExample from "./GroupExample";
 
 interface Pet {
   id: number;
@@ -13,12 +14,12 @@ interface Pet {
 const PetDetail = () => {
   const { id } = useParams(); // Extract the pet id from URL parameters
   const [pet, setPet] = useState<Pet | null>(null);
+  const [pets, setPets] = useState<Pet[]>([]); // State for all pets
 
   useEffect(() => {
     async function fetchPetDetails() {
       if (id) {
         try {
-          // Use the id from useParams to fetch pet details
           const response = await fetch(`http://127.0.0.1:5000/pets/${id}`);
           const data = await response.json();
           setPet(data);
@@ -27,15 +28,33 @@ const PetDetail = () => {
         }
       }
     }
+
+    async function fetchAllPets() {
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/pets`);
+        const data = await response.json();
+        setPets(data);
+      } catch (error) {
+        console.error("Error fetching pets:", error);
+      }
+    }
+
     fetchPetDetails();
+    fetchAllPets();
   }, [id]); // Fetch data whenever id changes
 
-  if (!pet) return <div>Loading...</div>; // Loading state
+  if (!pet) {
+    return (
+      <div>
+        <GroupExample pets={pets} /> {/* Pass pets data */}
+      </div>
+    );
+  }
 
   return (
     <div className="pet-detail-container">
       <h1>{pet.name}</h1>
-      <img src={`../../public/images/pets/${pet.id}.jpg`} alt={pet.name} />
+      <img src={`http://127.0.0.1:5000/${pet.image_url}`} alt={pet.name} />
       <p>
         <strong>Breed:</strong> {pet.breed}
       </p>

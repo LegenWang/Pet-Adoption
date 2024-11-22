@@ -73,12 +73,13 @@ def initialize_database():
             ('Tucker', 'Mixed', 1)
     """)
 
-    #Insert initial data into application table
+    # Insert initial data into Applications table
     cursor.execute("""
         INSERT OR IGNORE INTO Applications (id, user_name, user_age, user_occupation, user_salary, pet_name, pet_breed) 
         VALUES 
             (1, 'Alice', 30, 'Engineer', 80000, 'Buddy', 'Golden Retriever'),
-            (2, 'Bob', 40, 'Teacher', 50000, 'Rex', 'Bulldog')
+            (2, 'Bob', 40, 'Teacher', 50000, 'Rex', 'Bulldog'),
+            (3, 'Charlie', 35, 'Artist', 60000, 'Tucker', 'Mixed')
     """)
 
     #Insert initial data into manager table

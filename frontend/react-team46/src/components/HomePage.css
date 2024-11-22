@@ -1,6 +1,11 @@
+
 body {
-  background-color: rgb(213, 213, 213);
+  background-color: #d5d5d5;
+  min-height: 100vh; /* Ensure the body background covers the whole viewport */
+  display: flex;
+  flex-direction: column;
 }
+
 .aboutus {
   position: relative;
   border: 4px solid rgb(117, 117, 117);
@@ -10,6 +15,8 @@ body {
   margin-top: 1rem;
   left: -3%;
   margin-bottom: 1rem;
+  background-color: white; /* Optional: this defines the background of the aboutus section */
+  flex-shrink: 0; /* Prevent the aboutus section from shrinking */
 }
 .aboutus_body {
   position: relative;
