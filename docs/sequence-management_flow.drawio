@@ -1,0 +1,141 @@
+<mxfile host="65bd71144e">
+    <diagram id="vrhM6Eb72qf_KTEXfJSZ" name="Page-1">
+        <mxGraphModel dx="531" dy="724" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="4" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+                    <mxGeometry x="618.13" y="790.13" width="1041.25" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+                    <mxGeometry x="857.42" y="789.59" width="1040.16" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+                    <mxGeometry x="1099.98" y="787.03" width="1035.04" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Browser" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1317.5" y="200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Webserver" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1557.5" y="200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="rounded=1;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+                    <mxGeometry x="1340.61" y="788.18" width="1033.82" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="User clicks on &lt;br&gt;Management Applications" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1150" y="320" as="sourcePoint"/>
+                        <mxPoint x="1362" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="Browser sends http request&lt;div&gt;to view all applications&lt;br&gt;&amp;nbsp;information and details&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1393" y="360" as="sourcePoint"/>
+                        <mxPoint x="1600" y="360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="Webserver requests the correct data&lt;div&gt;for the applications in the database&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1630" y="400" as="sourcePoint"/>
+                        <mxPoint x="1840" y="400" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Database returns the correct data" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1840" y="480" as="sourcePoint"/>
+                        <mxPoint x="1630" y="480" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="returns all applications&lt;br&gt;data to display on&lt;div&gt;the browser&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1600" y="520" as="sourcePoint"/>
+                        <mxPoint x="1393" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="User receives and reads&lt;div&gt;the application&amp;nbsp; information&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1360" y="560" as="sourcePoint"/>
+                        <mxPoint x="1157" y="560" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="User clicks 'view details'&lt;br&gt;&amp;nbsp;on an application" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry x="-0.0016" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1150" y="680" as="sourcePoint"/>
+                        <mxPoint x="1360" y="680" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="Browser sends http request&lt;div&gt;to view application&lt;br&gt;&amp;nbsp;information and details&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1390" y="720" as="sourcePoint"/>
+                        <mxPoint x="1600" y="720" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="Webserver requests the correct data&lt;div&gt;for the applications in the database&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1630" y="800" as="sourcePoint"/>
+                        <mxPoint x="1840" y="800" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="Database returns the correct data" style="endArrow=classic;html=1;rounded=0;entryX=0.422;entryY=1.281;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="6">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1840" y="880" as="sourcePoint"/>
+                        <mxPoint x="1640" y="880" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" value="returns all applications&lt;br&gt;data to display on&lt;div&gt;the browser&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1600" y="920" as="sourcePoint"/>
+                        <mxPoint x="1393" y="920" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="User receives and reads&lt;div&gt;the individual application&amp;nbsp; information&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1360" y="960" as="sourcePoint"/>
+                        <mxPoint x="1153" y="960" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="1124" y="200" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="User clicks Accept or Reject&lt;br&gt;&amp;nbsp;for the application" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry x="-0.0016" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1150" y="1042" as="sourcePoint"/>
+                        <mxPoint x="1360" y="1042" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="42" value="browser sends the user's decision &lt;br&gt;to the web server" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1390" y="1080" as="sourcePoint"/>
+                        <mxPoint x="1600" y="1080" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="stores the users's decsion by&amp;nbsp;&lt;br&gt;adding the adopted pet&lt;br&gt;to the user and setting the petAdopted&lt;br&gt;status to True, or discards the&lt;br&gt;adoption application" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1630" y="1130" as="sourcePoint"/>
+                        <mxPoint x="1840" y="1130" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="database confirms if the&lt;br&gt;&amp;nbsp;changes were stored" style="endArrow=classic;html=1;rounded=0;entryX=0.209;entryY=1.083;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1840" y="1220.29" as="sourcePoint"/>
+                        <mxPoint x="1632.08" y="1219.9983300000004" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="webserver forwards confirmation&lt;div&gt;to browser&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1597" y="1250" as="sourcePoint"/>
+                        <mxPoint x="1390" y="1250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="browser returns confirmation&lt;div&gt;to the user&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1361" y="1290" as="sourcePoint"/>
+                        <mxPoint x="1154" y="1290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
