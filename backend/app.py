@@ -19,7 +19,7 @@ CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 # Register blueprints
 app.register_blueprint(pets_blueprint, url_prefix='/pets')
 app.register_blueprint(user_blueprint, url_prefix='/user')
-app.register_blueprint(application_blueprint, url_prefix='/application')
+app.register_blueprint(application_blueprint, url_prefix='/applications')
 
 @app.route('/')
 def index():

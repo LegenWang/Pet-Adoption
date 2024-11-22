@@ -25,12 +25,24 @@ def get_applications():
               id:
                 type: integer
                 example: 1
-              name:
+              user_name:
                 type: string
-                example: John Doe
-              status:
+                example: Alice
+              user_age:
+                type: integer
+                example: 30
+              user_occupation:
                 type: string
-                example: Pending
+                example: Engineer
+              user_salary:
+                type: integer
+                example: 80000
+              pet_name:
+                type: string
+                example: Buddy
+              pet_breed:
+                type: string
+                example: Golden Retriever
     """
     connection = sqlite3.connect('petSite.db')
     connection.row_factory = sqlite3.Row
@@ -38,8 +50,21 @@ def get_applications():
 
     cursor.execute("SELECT * FROM Applications")
     rows = cursor.fetchall()
-    applications = [dict(row) for row in rows]
+    applications = [
+        {
+            "id": row["id"],
+            "user_name": row["user_name"],
+            "user_age": row["user_age"],
+            "user_occupation": row["user_occupation"],
+            "user_salary": row["user_salary"],
+            "pet_name": row["pet_name"],
+            "pet_breed": row["pet_breed"]
+        }
+        for row in rows
+    ]
+    connection.close()
     return jsonify(applications)
+
 
 @application_blueprint.route('/<int:app_id>', methods=['GET'])
 def get_application(app_id):
@@ -141,6 +166,53 @@ def manage_login():
         return jsonify({"message": "Invalid manager email or password"}), 401
 
     return jsonify({"message": "Login successful", "manager_email": manager["manager_email"]}), 200
+
+@application_blueprint.route('/<int:app_id>/update_status', methods=['PUT'])
+def update_application_status(app_id):
+    """
+    Update the status of an application (Approve/Reject)
+    ---
+    tags:
+      - Applications
+    parameters:
+      - name: app_id
+        in: path
+        type: integer
+        required: true
+        description: ID of the application to update
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            status:
+              type: string
+              example: Approved
+    responses:
+      200:
+        description: Application status updated successfully
+      404:
+        description: Application not found
+    """
+    data = request.get_json()
+    new_status = data.get("status")
+    
+    connection = sqlite3.connect('petSite.db')
+    connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+
+    cursor.execute("UPDATE Applications SET status = ? WHERE id = ?", (new_status, app_id))
+    connection.commit()
+
+    cursor.execute("SELECT * FROM Applications WHERE id = ?", (app_id,))
+    application = cursor.fetchone()
+    connection.close()
+
+    if application is None:
+        return jsonify({"message": "Application not found"}), 404
+
+    return jsonify({"message": "Application status updated", "application": dict(application)}), 200
 
 # Ensure to initialize Swagger in your main app entry file:
 # from flask import Flask
