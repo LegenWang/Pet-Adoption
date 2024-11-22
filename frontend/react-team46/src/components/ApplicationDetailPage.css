@@ -1,0 +1,60 @@
+.application-detail {
+    width: 50%;
+    padding: 2rem;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .application-detail h1 {
+    text-align: center;
+  }
+  
+  .application-detail p {
+    font-size: 16px;
+    margin: 8px 0;
+    text-align: left;
+  }
+  
+  .status-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .status-actions button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .status-actions button:hover {
+    opacity: 0.8;
+  }
+  
+  .status-actions button:active {
+    background-color: #ddd;
+  }
+  
+  .back-to-list {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .back-to-list button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .back-to-list button:hover {
+    background-color: #0056b3;
+  }
+  
