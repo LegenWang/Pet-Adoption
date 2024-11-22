@@ -19,7 +19,9 @@ const BootstrapCarousel = () => {
       try {
         const response = await fetch("http://127.0.0.1:5000/pets"); // Replace with your API URL
         const data = await response.json();
-        setPets(data);
+        // Shuffle pets array and limit to 6 pets
+        const shuffledPets = data.sort(() => Math.random() - 0.5).slice(0, 6);
+        setPets(shuffledPets);
       } catch (error) {
         console.error("Error fetching pets data:", error);
       }
