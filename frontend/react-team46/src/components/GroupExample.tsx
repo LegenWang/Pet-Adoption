@@ -11,7 +11,7 @@ const GroupExample = ({ pets }) => {
       {pets.map((pet) => (
         <Col key={pet.id} xs={12} sm={6} md={3} lg={3}> {/* 4 per row on large, 2 per row on medium */}
           <Card className="pet-card">
-            <Card.Img variant="top" src={`http://127.0.0.1:5000/${pet.image_url}`} />
+            <Card.Img variant="top" src={`http://127.0.0.1:5000/static/images/pets/${pet.id}.jpg`} />
             <Card.Body>
               <Card.Title>{pet.name}</Card.Title>
               <Card.Text>

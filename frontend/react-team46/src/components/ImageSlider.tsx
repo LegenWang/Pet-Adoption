@@ -36,7 +36,7 @@ const BootstrapCarousel = () => {
         <Carousel.Item key={pet.id}>
           <img
             className="d-block w-100"
-            src={`http://127.0.0.1:5000/${pet.image_url}`} // Use the image_url from API response
+            src={`http://127.0.0.1:5000/static/images/pets/${pet.id}.jpg`} // Use the image_url from API response
             alt={`Slide of ${pet.name}`}
           />
           <Carousel.Caption>
