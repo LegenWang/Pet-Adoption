@@ -9,6 +9,9 @@ swagger = Swagger(app)
 
 @app.after_request
 def after_request(response):
+    '''
+    Add headers to enable CORS
+    '''
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
@@ -61,15 +64,30 @@ def login_users():
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
+    # Check if it's a manager login
+    cursor.execute("SELECT * FROM Managers WHERE manager_email = ? AND manager_password = ?", (username, password))
+    manager = cursor.fetchone()
+
+    # If manager is found, return hardcoded role 'manager'
+    if manager:
+        return jsonify({
+            "message": f"Welcome back, {manager['manager_email']}!",
+            "role": "manager"
+        }), 200
+
+    # Check if it's a user login
     cursor.execute("SELECT * FROM Users WHERE username = ? AND password = ?", (username, password))
     user = cursor.fetchone()
 
     connection.close()
 
     if user is None:
-        return jsonify({"error": "Invalid username or password"}), 401
+        return jsonify({"error": "Invalid username/email or password"}), 401
 
-    return jsonify({"message": f"Welcome back, {user['username']}!"}), 200
+    return jsonify({
+        "message": f"Welcome back, {user['username']}!",
+        "role": user['role']
+    }), 200
 
 
 @user_blueprint.route('/register', methods=['POST'])

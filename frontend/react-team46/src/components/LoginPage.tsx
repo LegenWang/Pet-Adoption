@@ -14,34 +14,32 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
     const endpoint = isRegistering ? "/register" : "/login";
   
-    // Prepare payload for API request
     const payload: any = {
       username,
       password,
     };
-  
-    if (isRegistering) {
-      payload.email = email; // Add email only when registering
-    }
-  
+
     try {
       const response = await axios.post('http://localhost:5000/users' + endpoint, payload, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-  
+
       alert(response.data.message);
-  
+
+      // Check if user is logging in
       if (!isRegistering) {
-        navigate("/pets"); 
+        // Save role in local storage to use for conditional rendering
+        localStorage.setItem('role', response.data.role); 
+        navigate("/");
       } else {
-        setIsRegistering(false); // Switch to login form after successful registration
+        setIsRegistering(false); 
       }
     } catch (error: any) {
       alert(error.response?.data.error || "An error occurred");
     }
-  };  
+  };
 
   const toggleForm = () => {
     setIsRegistering(!isRegistering);
