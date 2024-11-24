@@ -32,7 +32,7 @@ class TestAPI:
         response_get = self.client.get('/1')
         assert response_get.status_code == 200
         data = response_get.get_json()
-        assert data['name'] == 'Rio' # Verify that 'Buddy is in the returned data
+        assert data['name'] == 'Buddy' # Verify that 'Buddy is in the returned data
 
     def test_get_pet_not_found(self):
         """Test retrieving a pet by ID that doesn't exist"""
