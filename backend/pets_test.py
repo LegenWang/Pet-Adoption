@@ -25,14 +25,18 @@ class TestAPI:
         response_get = self.client.get('/')
         assert response_get.status_code == 200
         data = response_get.get_json()
-        assert isinstance(data, list)  # Verify that a list is returned
+        assert isinstance(data, list)
+        assert len(data) > 0  # Ensure there are pets in the list
+        assert data[0]["name"] == "Rio"  # Check the first pet's name
+
 
     def test_get_pet_found(self):
         """Test retrieving a pet by ID that exists"""
         response_get = self.client.get('/1')
         assert response_get.status_code == 200
         data = response_get.get_json()
-        assert data['name'] == 'Rio' # Verify that 'Buddy is in the returned data
+        assert data["name"] == "Rio"
+        assert data["breed"] == "Labradoole"
 
     def test_get_pet_not_found(self):
         """Test retrieving a pet by ID that doesn't exist"""
