@@ -66,7 +66,7 @@ const PetDetail = () => {
           ? "This pet is adopted"
           : "This pet is available for adoption"}
       </p>
-      <Link to="/" className="back-button">
+      <Link to="/pets" className="back-button-det">
         Back to Pet List
       </Link>
     </div>

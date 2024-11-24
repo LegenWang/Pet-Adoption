@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./ApplicationDetailPage.css"; // Import the custom CSS
 
 interface Application {
@@ -16,6 +16,9 @@ interface Application {
 const ApplicationDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const [application, setApplication] = useState<Application | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchApplicationDetails() {
@@ -25,6 +28,7 @@ const ApplicationDetailPage = () => {
         setApplication(data);
       } catch (error) {
         console.error("Error fetching application details:", error);
+        setError("Failed to load application details.");
       }
     }
 
@@ -32,6 +36,8 @@ const ApplicationDetailPage = () => {
   }, [id]);
 
   const handleUpdateStatus = async (status: string) => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await fetch(
         `http://127.0.0.1:5000/applications/${id}/update_status`,
@@ -43,12 +49,24 @@ const ApplicationDetailPage = () => {
           body: JSON.stringify({ status }),
         }
       );
+
+      if (!response.ok) {
+        throw new Error("Failed to update application status.");
+      }
+
       const data = await response.json();
       setApplication(data.application);
     } catch (error) {
       console.error("Error updating application status:", error);
+      setError("Failed to update application status.");
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (error) {
+    return <p className="error">{error}</p>;
+  }
 
   if (!application) {
     return <p>Loading application details...</p>;
@@ -79,12 +97,33 @@ const ApplicationDetailPage = () => {
         <strong>Status:</strong> {application.status}
       </p>
       <div className="status-actions">
-        <button onClick={() => handleUpdateStatus("Approved")}>Accept</button>
-        <button onClick={() => window.history.back()} className="back-button">
-            Back to Applications List
+        <button
+          onClick={() => handleUpdateStatus("Approved")}
+          disabled={loading}
+        >
+          Accept
         </button>
-        <button onClick={() => handleUpdateStatus("Rejected")}>Reject</button>
+        <button
+          onClick={() => navigate(-1)}
+          className="back-button"
+          disabled={loading}
+        >
+          Back to Applications List
+        </button>
+        <button
+          onClick={() => handleUpdateStatus("Rejected")}
+          disabled={loading}
+        >
+          Reject
+        </button>
+        <button
+          onClick={() => handleUpdateStatus("Pending")}
+          disabled={loading}
+        >
+          Reset to Pending
+        </button>
       </div>
+      {loading && <p className="loading-message">Updating status...</p>}
     </div>
   );
 };

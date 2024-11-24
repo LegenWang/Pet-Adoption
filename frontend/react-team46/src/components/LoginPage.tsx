@@ -1,41 +1,54 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./LoginPage.css";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>(""); 
   const [password, setPassword] = useState<string>("");
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false); 
-  const [isRegistering, setIsRegistering] = useState<boolean>(false); // Track if user is in register mode
+  const [isRegistering, setIsRegistering] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const endpoint = isRegistering ? "/register" : "/login";
+  
+    const payload: any = {
+      username,
+      password,
+    };
 
-    if (isRegistering) {
-      // Register user (basic simulation)
-      alert(`Account created for ${username}! Please log in.`);
-      setIsRegistering(false); // Switch back to login mode
-    } else {
-      if (!isLoggedIn) {
-        // Log in user
-        setIsLoggedIn(true);
-        alert(`Welcome, ${username}! You are now logged in.`);
-        navigate("/application");
+    try {
+      const response = await axios.post('http://localhost:5000/users' + endpoint, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      alert(response.data.message);
+
+      // Check if user is logging in
+      if (!isRegistering) {
+        // Save role in local storage to use for conditional rendering
+        localStorage.setItem('role', response.data.role); 
+        navigate("/");
       } else {
-        alert("You are already logged in!");
+        setIsRegistering(false); 
       }
+    } catch (error: any) {
+      alert(error.response?.data.error || "An error occurred");
     }
   };
 
   const toggleForm = () => {
-    setIsRegistering(!isRegistering); // Toggle between login and register form
+    setIsRegistering(!isRegistering);
   };
 
   return (
     <div className="login-container">
       <div className="login-card">
-        <h2 className="login-title">{isRegistering ? "Register" : "Log In"}</h2> 
+        <h2 className="login-title">{isRegistering ? "Register" : "Log In"}</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="username">Username</label>
@@ -48,6 +61,19 @@ const LoginPage: React.FC = () => {
               placeholder="Enter your username"
             />
           </div>
+          {isRegistering && (
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-input"
+                placeholder="Enter your email"
+              />
+            </div>
+          )}
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
@@ -59,31 +85,13 @@ const LoginPage: React.FC = () => {
               placeholder="Enter your password"
             />
           </div>
-
-          {/* Register specific field (optional email) */}
-          {isRegistering && (
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                className="form-input"
-                placeholder="Enter your email"
-              />
-            </div>
-          )}
-
           <button type="submit" className="btn">
             {isRegistering ? "Register" : "Sign In"}
           </button>
         </form>
-
-        {/* Toggle between login and register */}
         <div className="toggle">
           <p>
-            {isRegistering
-              ? "Already have an account? "
-              : "Don't have an account? "}
+            {isRegistering ? "Already have an account? " : "Don't have an account? "}
             <button onClick={toggleForm}>
               {isRegistering ? "Login" : "Register"}
             </button>

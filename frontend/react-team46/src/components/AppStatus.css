@@ -51,6 +51,28 @@ h1 {
   width: 20px;
   height: 20px;
   accent-color: #6a1b9a;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 2px solid #040007;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.status-item input[type="checkbox"]:checked {
+  background-color: #444247;
+  position: relative;
+}
+
+.status-item input[type="checkbox"]:checked::before {
+  content: '\2714';
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 button {
