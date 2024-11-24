@@ -1,7 +1,7 @@
 ''' Test file '''
 import pytest
-from users import user_blueprint
 import sqlite3
+from users import user_blueprint
 from flask import Flask
 from data_base import initialize_database
 
