@@ -80,7 +80,8 @@ def initialize_users_managers_database():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT NOT NULL UNIQUE,
             email TEXT NOT NULL UNIQUE,
-            password TEXT NOT NULL
+            password TEXT NOT NULL,
+            role TEXT NOT NULL DEFAULT 'user'  -- Added role column
         )
     """)
 
@@ -93,12 +94,12 @@ def initialize_users_managers_database():
         )
     """)
 
-    # Insert initial data into Users
+    # Insert initial data into Users with role info
     cursor.execute("""
-        INSERT OR IGNORE INTO Users (username, email, password) 
+        INSERT OR IGNORE INTO Users (username, email, password, role) 
         VALUES
-            ('steven', 'steven@example.com', '1234567'),
-            ('james', 'james@example.com', 'helloworld')
+            ('steven', 'steven@example.com', '1234567', 'user'),
+            ('james', 'james@example.com', 'helloworld', 'user')
     """)
 
     # Insert initial data into Managers table

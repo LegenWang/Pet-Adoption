@@ -41,9 +41,28 @@
   justify-content: flex-end;
 }
 
+.logout-btn {
+  background-color: #252424;
+  color: white;
+  font-size: 1.6rem; /* Adjust this size */
+  padding: 0.5rem 1.5rem; /* Adjust padding to make it more compact */
+  border: none;
+  margin-left: 1rem; /* Space it out from other items */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #767575;
+}
+
 @media (max-width: 767px) {
   .navbar-nav {
     text-align: center;
-    width: 100%; /* Ensure navbar items take up full width on smaller screens */
+    width: 100%;
+  }
+
+  .logout-btn {
+    width: auto; /* Ensure the button isn't stretching on small screens */
   }
 }

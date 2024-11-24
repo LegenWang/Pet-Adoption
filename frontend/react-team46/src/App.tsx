@@ -11,6 +11,7 @@ import ResultPage from "./components/ResultPage";
 import "./components/Navbar.css";
 import ApplicationViewPage from "./components/ApplicationViewPage";
 import ApplicationDetailPage from "./components/ApplicationDetailPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -28,8 +29,23 @@ function App() {
           <Route path="/status" element={<ApplicationStatus />} />
           <Route path="/application" element={<ApplicationPage />} />
           <Route path="/result" element={<ResultPage />} />
-          <Route path="/application-view" element={<ApplicationViewPage />} />
-          <Route path="/applications/:id" element={<ApplicationDetailPage />} />
+          {/* Protected Routes */}
+          <Route 
+            path="/application-view" 
+            element={
+              <ProtectedRoute>
+                <ApplicationViewPage />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/applications/:id" 
+            element={
+              <ProtectedRoute>
+                <ApplicationDetailPage />
+              </ProtectedRoute>
+            } 
+          />
         </Routes>
       </div>
     </Router>
