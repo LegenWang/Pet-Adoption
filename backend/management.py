@@ -44,7 +44,7 @@ def get_applications():
                 type: string
                 example: Golden Retriever
     """
-    connection = sqlite3.connect('petSite.db')
+    connection = sqlite3.connect('users_managers.db')
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
@@ -99,7 +99,7 @@ def get_application(app_id):
       404:
         description: Application not found
     """
-    connection = sqlite3.connect('petSite.db')
+    connection = sqlite3.connect('users_managers.db')
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
@@ -153,7 +153,7 @@ def manage_login():
     manager_email = data.get("manager_email")
     manager_password = data.get("manager_password")
 
-    connection = sqlite3.connect('petSite.db')
+    connection = sqlite3.connect('users_managers.db')
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
@@ -199,7 +199,7 @@ def update_application_status(app_id):
     data = request.get_json()
     new_status = data.get("status")
 
-    connection = sqlite3.connect('petSite.db')
+    connection = sqlite3.connect('users_managers.db')
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
