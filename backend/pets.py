@@ -112,5 +112,4 @@ def get_pet(pet_id):
 
     # Convert the pet row to a dictionary and add the image URL
     pet_data = dict(pet)
-  
     return jsonify(pet_data), 200
