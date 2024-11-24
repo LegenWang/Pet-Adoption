@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "./AppStatus.css";
 
 const statusItems = [
-  { label: "Received", checked: true },
-  { label: "Under Review", checked: true },
-  { label: "Additional Information Required", checked: true },
-  { label: "In Progress", checked: true },
+  { label: "Received", checked: false },
+  { label: "Under Review", checked: false },
+  { label: "Additional Information Required", checked: false },
+  { label: "In Progress", checked: false},
   {
     label: "Completed, click here to see the result",
     checked: true,
