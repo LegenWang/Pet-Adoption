@@ -1,11 +1,18 @@
 ''' API File '''
 import sqlite3
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, Flask
 from flasgger import Swagger
 
-user_blueprint = Blueprint('user', __name__)
+user_blueprint = Blueprint('users', __name__)
+app = Flask(__name__)
+swagger = Swagger(app)
 
-swagger = Swagger()
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
 
 @user_blueprint.route('/login', methods=['POST'])
 def login_users():
@@ -50,7 +57,7 @@ def login_users():
     username = credentials.get("username")
     password = credentials.get("password")
 
-    connection = sqlite3.connect('petSite.db')
+    connection = sqlite3.connect('users_managers.db')
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
@@ -62,7 +69,7 @@ def login_users():
     if user is None:
         return jsonify({"error": "Invalid username or password"}), 401
 
-    return jsonify({"username": user["username"]}), 200
+    return jsonify({"message": f"Welcome back, {user['username']}!"}), 200
 
 
 @user_blueprint.route('/register', methods=['POST'])
@@ -107,25 +114,68 @@ def register_user():
     '''
     user_data = request.json
     username = user_data.get("username")
+    email = user_data.get("email")
+    password = user_data.get("password")
 
-    connection = sqlite3.connect('petSite.db')
+    connection = sqlite3.connect('users_managers.db')
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
-    # Check if the username already exists
-    cursor.execute("SELECT * FROM Users WHERE username = ?", (username,))
+    # Check if the username or email already exists
+    cursor.execute("SELECT * FROM Users WHERE username = ? OR email = ?", (username, email))
     existing_user = cursor.fetchone()
 
     if existing_user:
         connection.close()
-        return jsonify({"error": "Username already exists"}), 400
+        return jsonify({"error": "Username or email already exists"}), 400
 
-    cursor.execute("INSERT INTO Users (username, password) VALUES (?, ?)",
-     (username, user_data.get("password")))
+    cursor.execute("INSERT INTO Users (username, email, password) VALUES (?, ?, ?)", 
+    (username, email, password))
     connection.commit()
     connection.close()
 
     return jsonify({"message": "User registered successfully"}), 201
+
+@user_blueprint.route('/all', methods=['GET'])
+def get_all_users():
+    """
+    Fetch all users from the database.
+
+    This endpoint retrieves a list of all registered users and their details.
+
+    ---
+    tags:
+      - Users
+    responses:
+      200:
+        description: A list of all users.
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              username:
+                type: string
+                example: "john_doe"
+              email:
+                type: string
+                example: "john_doe@example.com"
+      500:
+        description: Database error.
+    """
+    connection = sqlite3.connect('users_managers.db')
+    connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT id, username, email FROM Users")
+    users = [dict(row) for row in cursor.fetchall()]
+
+    connection.close()
+
+    return jsonify(users), 200
 
 # log out is commented because in the app we can either ues a session or
 # jwt token to manage logged in users
