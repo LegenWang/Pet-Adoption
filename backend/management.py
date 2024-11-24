@@ -198,7 +198,7 @@ def update_application_status(app_id):
     """
     data = request.get_json()
     new_status = data.get("status")
-    
+
     connection = sqlite3.connect('petSite.db')
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()

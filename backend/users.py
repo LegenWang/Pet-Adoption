@@ -65,7 +65,8 @@ def login_users():
     cursor = connection.cursor()
 
     # Check if it's a manager login
-    cursor.execute("SELECT * FROM Managers WHERE manager_email = ? AND manager_password = ?", (username, password))
+    cursor.execute("SELECT * FROM Managers WHERE manager_email = ? AND manager_password = ?",
+     (username, password))
     manager = cursor.fetchone()
 
     # If manager is found, return hardcoded role 'manager'
@@ -147,7 +148,7 @@ def register_user():
         connection.close()
         return jsonify({"error": "Username or email already exists"}), 400
 
-    cursor.execute("INSERT INTO Users (username, email, password) VALUES (?, ?, ?)", 
+    cursor.execute("INSERT INTO Users (username, email, password) VALUES (?, ?, ?)",
     (username, email, password))
     connection.commit()
     connection.close()
