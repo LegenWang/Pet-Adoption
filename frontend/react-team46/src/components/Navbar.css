@@ -1,40 +1,47 @@
 .navbar {
   background-color: #161616;
-  padding: 3rem 3rem;
-  display: flex; /* Enable flexbox layout */
-  justify-content: space-between; /* Space out elements evenly */
-  align-items: center; /* Align items vertically */
-  width: 100%; /* Ensure the navbar takes up the full width */
+  padding: 0.5rem 1rem; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100%; 
+  box-sizing: border-box;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  z-index: 9999;
+  height: 65px; 
 }
 
 .navbar .navbar-brand {
-  font-size: 3rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: #ffffff;
-  padding-left: 1rem;
 }
 
 .navbar .navbar-brand:hover {
-  color: #00682d;
+  color: #456352;
 }
 
 .navbar-nav {
-  display: flex; /* Use flexbox for the navbar items */
-  justify-content: flex-end; /* Align navbar items to the right */
-  width: 100%; /* Ensure navbar items stretch to fill available space */
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  align-self: center;
 }
 
 .navbar-nav .nav-item .nav-link {
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #ffffff;
   margin-left: 2rem;
   margin-right: 2rem;
-  padding: 1rem 1rem;
+  padding: 0.75rem 1rem;
 }
 
 .navbar-nav .nav-item .nav-link:hover {
-  color: #00682d;
+  color: #456352;
 }
 
 .collapse.navbar-collapse {
@@ -44,25 +51,35 @@
 .logout-btn {
   background-color: #252424;
   color: white;
-  font-size: 1.6rem; /* Adjust this size */
-  padding: 0.5rem 1.5rem; /* Adjust padding to make it more compact */
+  font-size: 1.2rem; 
+  padding: 0.5rem 1.5rem; 
   border: none;
   margin-left: 1rem; /* Space it out from other items */
   border-radius: 5px;
   cursor: pointer;
+  align-self: center;
 }
 
 .logout-btn:hover {
   background-color: #767575;
 }
 
+/* Make navbar items stack on smaller screens */
 @media (max-width: 767px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+  }
   .navbar-nav {
-    text-align: center;
+    flex-direction: column;
     width: 100%;
   }
 
   .logout-btn {
-    width: auto; /* Ensure the button isn't stretching on small screens */
+    width: auto;
   }
+}
+
+body {
+  padding-top: 80px;
 }

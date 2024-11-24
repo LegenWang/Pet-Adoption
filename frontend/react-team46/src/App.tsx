@@ -22,8 +22,8 @@ function App() {
         {/* Other components and routes go here */}
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/pets" element={<PetDetail />} />
-          <Route path="/pets/:id" element={<PetDetail />} />
+          <Route path="/pets" element={<PetDetail key="pets-list" />} />
+          <Route path="/pets/:id" element={<PetDetail key="pet-detail" />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/status" element={<ApplicationStatus />} />
           <Route path="/application" element={<ApplicationPage />} />
