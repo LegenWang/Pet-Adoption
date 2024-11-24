@@ -1,6 +1,7 @@
 ''' Test file '''
 import pytest
 from users import user_blueprint
+import sqlite3
 from flask import Flask
 from data_base import initialize_database
 
@@ -15,12 +16,28 @@ class TestAPI:
         # Initialize the database before running tests
         initialize_database()
 
+        # Clear any previous test data to avoid conflicts
+        self.clear_test_data()
+
         app = Flask(__name__)
         app.register_blueprint(user_blueprint)
         app.config['TESTING'] = True
         with app.test_client() as test_client:
             TestAPI.client = test_client
             yield
+
+    def clear_test_data(self):
+        """
+        Clear all test data from the database.
+        """
+        connection = sqlite3.connect('users_managers.db')
+        cursor = connection.cursor()
+
+        # Remove any test users added during previous tests
+        cursor.execute("DELETE FROM Users WHERE username IN ('jason')")
+
+        connection.commit()
+        connection.close()
 
     def test_login_success(self):
         """Test successful user login."""
@@ -31,7 +48,7 @@ class TestAPI:
         response = self.client.post('/login', json=payload)
 
         assert response.status_code == 200
-        assert response.get_json()["username"] == "steven"
+        assert "Welcome back, steven!" in response.get_json()["message"]
 
     def test_login_failure(self):
         """Test user login with incorrect credentials."""
@@ -42,12 +59,13 @@ class TestAPI:
         response = self.client.post('/login', json=payload)
 
         assert response.status_code == 401
-        assert response.get_json()["error"] == "Invalid username or password"
+        assert response.get_json()["error"] == "Invalid username/email or password"
 
     def test_register_success(self):
         """Test successful user registration."""
         payload = {
             "username": "jason",
+            "email": "jason@example",
             "password": "newpassword"
         }
         response = self.client.post('/register', json=payload)
@@ -67,7 +85,7 @@ class TestAPI:
             "password": "helloworld"
         })
         assert response.status_code == 400
-        assert response.get_json()["error"] == "Username already exists"
+        assert response.get_json()["error"] == "Username or email already exists"
 
 # the main api is commented out for now so the test will be tested later
     # def test_logout_success(self):
