@@ -56,6 +56,14 @@ def initialize_database():
             (3, 'Charlie', 35, 'Artist', 60000, 'Tucker', 'Mixed')
     """)
 
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Managers (
+            id INTEGER PRIMARY KEY,
+            manager_email TEXT UNIQUE NOT NULL,
+            manager_password TEXT NOT NULL
+        )
+    ''')
+
     connection.commit()
     connection.close()
 
