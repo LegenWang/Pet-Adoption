@@ -3,6 +3,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginPage.css";
 
+interface Payload {
+  username: string;
+  password: string;
+}
+
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>(""); 
@@ -14,7 +19,7 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
     const endpoint = isRegistering ? "/register" : "/login";
   
-    const payload: any = {
+    const payload: Payload = {
       username,
       password,
     };
@@ -36,8 +41,13 @@ const LoginPage: React.FC = () => {
       } else {
         setIsRegistering(false); 
       }
-    } catch (error: any) {
-      alert(error.response?.data.error || "An error occurred");
+    } catch (error: unknown) {
+      // Type guard to check if error is an instance of AxiosError
+      if (axios.isAxiosError(error)) {
+        alert(error.response?.data.error || "An error occurred");
+      } else {
+        alert("An unexpected error occurred");
+      }
     }
   };
 
