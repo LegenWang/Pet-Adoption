@@ -1,6 +1,6 @@
 ''' Test file '''
-import pytest
 import sqlite3
+import pytest
 from users import user_blueprint
 from flask import Flask
 from data_base import initialize_database
