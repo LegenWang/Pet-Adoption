@@ -58,7 +58,8 @@ def get_applications():
             "user_occupation": row["user_occupation"],
             "user_salary": row["user_salary"],
             "pet_name": row["pet_name"],
-            "pet_breed": row["pet_breed"]
+            "pet_breed": row["pet_breed"],
+            "status": row["status"]
         }
         for row in rows
     ]

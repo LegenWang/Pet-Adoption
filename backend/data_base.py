@@ -14,7 +14,7 @@ def initialize_database():
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
-    #Create application table
+    # Create the Applications table if it doesn't exist (without the new column)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Applications (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -23,11 +23,12 @@ def initialize_database():
             user_occupation TEXT NOT NULL,
             user_salary INTEGER,
             pet_name TEXT NOT NULL,
-            pet_breed TEXT NOT NULL
-                   )
-                   """)
+            pet_breed TEXT NOT NULL,
+            status TEXT DEFAULT 'Pending'
+        )
+    """)
 
-    # Create Pets table
+    # Create the Pets table if it doesn't exist
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Pets (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -46,15 +47,6 @@ def initialize_database():
             (3, 'Tucker', 'Mixed', 1)
     """)
 
-    # Insert initial data into Pets table if not already added
-    cursor.execute("""
-        INSERT OR IGNORE INTO Pets (name, breed, age) 
-        VALUES 
-            ('Buddy', 'Golden Retriever', 3),
-            ('Rex', 'Bulldog', 6),
-            ('Tucker', 'Mixed', 1)
-    """)
-
     # Insert initial data into Applications table
     cursor.execute("""
         INSERT OR IGNORE INTO Applications (id, user_name, user_age, user_occupation, user_salary, pet_name, pet_breed) 
@@ -64,6 +56,8 @@ def initialize_database():
             (3, 'Charlie', 35, 'Artist', 60000, 'Tucker', 'Mixed')
     """)
 
+    connection.commit()
+    connection.close()
 
 def initialize_users_managers_database():
     """
