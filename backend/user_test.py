@@ -3,7 +3,7 @@ import sqlite3
 import pytest
 from users import user_blueprint
 from flask import Flask
-from data_base import initialize_database
+from data_base import initialize_database, initialize_users_managers_database
 
 class TestAPI:
     '''Class for all unit tests.'''
@@ -15,6 +15,7 @@ class TestAPI:
 
         # Initialize the database before running tests
         initialize_database()
+        initialize_users_managers_database()
 
         # Clear any previous test data to avoid conflicts
         self.clear_test_data()

@@ -2,7 +2,7 @@
 import pytest
 from flask import Flask
 from management import application_blueprint
-from data_base import initialize_database
+from data_base import initialize_database, initialize_users_managers_database
 
 class TestManagementAPI:
     """Class for all management API unit tests."""
@@ -12,6 +12,7 @@ class TestManagementAPI:
     def setup_client(self):
         """Setting up test client for all tests."""
         initialize_database()
+        initialize_users_managers_database()
         app = Flask(__name__)
         app.register_blueprint(application_blueprint)
         app.config['TESTING'] = True
