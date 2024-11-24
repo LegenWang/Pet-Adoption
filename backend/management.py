@@ -153,7 +153,7 @@ def manage_login():
     manager_email = data.get("manager_email")
     manager_password = data.get("manager_password")
 
-    connection = sqlite3.connect('petSite.db')
+    connection = sqlite3.connect('users_managers.db')
     connection.row_factory = sqlite3.Row
     cursor = connection.cursor()
 
