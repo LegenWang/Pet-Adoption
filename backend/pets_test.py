@@ -27,7 +27,7 @@ class TestAPI:
         data = response_get.get_json()
         assert isinstance(data, list)
         assert len(data) > 0  # Ensure there are pets in the list
-        assert data[0]["name"] == "Rio"  # Check the first pet's name
+        assert data[0]["name"] == "Buddy"  # Check the first pet's name
 
 
     def test_get_pet_found(self):
@@ -35,8 +35,8 @@ class TestAPI:
         response_get = self.client.get('/1')
         assert response_get.status_code == 200
         data = response_get.get_json()
-        assert data["name"] == "Rio"
-        assert data["breed"] == "Labradoole"
+        assert data["name"] == "Buddy"
+        assert data["breed"] == "Golden Retriever"
 
     def test_get_pet_not_found(self):
         """Test retrieving a pet by ID that doesn't exist"""

@@ -49,7 +49,7 @@ def get_pets():
 
     # Convert rows to a list of dictionaries and add the image URL
     pet_list = [
-        {**dict(pet), "image_url": f"/static/images/pets/{pet['imagepath']}"}
+        {**dict(pet)}
         for pet in pets
     ]
     conn.close()
@@ -112,5 +112,5 @@ def get_pet(pet_id):
 
     # Convert the pet row to a dictionary and add the image URL
     pet_data = dict(pet)
-    pet_data["image_url"] = f"/static/images/pets/{pet['imagepath']}"
+  
     return jsonify(pet_data), 200
