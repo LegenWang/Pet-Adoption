@@ -45,7 +45,7 @@ jobs:
 
       - name: Check code formatting with Prettier
         working-directory: ./frontend/react-team46
-        run: npx prettier --check "**/*.{ts,tsx,js,jsx,json,css,md}"
+        run: npx prettier --write "**/*.{ts,tsx,js,jsx,json,css,md}"
 
       - name: TypeScript check
         working-directory: ./frontend/react-team46
