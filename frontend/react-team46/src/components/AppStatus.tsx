@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "./AppStatus.css";
 
 const statusItems = [
-  { label: "Received", checked: true },
-  { label: "Under Review", checked: true },
-  { label: "Additional Information Required", checked: true },
-  { label: "In Progress", checked: true },
+  { label: "Received", checked: false },
+  { label: "Under Review", checked: false },
+  { label: "Additional Information Required", checked: false },
+  { label: "In Progress", checked: false},
   {
     label: "Completed, click here to see the result",
     checked: true,
@@ -27,7 +27,15 @@ const ApplicationStatus: React.FC = () => {
         {statusItems.map((item, index) => (
           <li key={index} className="status-item">
             {item.isLink ? (
-              <a href="/result">{item.label}</a>
+              <a
+              href="/result?accepted=true"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/result?accepted=true");
+              }}
+            >
+              {item.label}
+            </a>
             ) : (
               <label htmlFor={`status-${index}`}>{item.label}</label>
             )}
@@ -42,7 +50,7 @@ const ApplicationStatus: React.FC = () => {
         ))}
       </ul>
 
-      <button onClick={() => navigate("/")}>Cancel application</button>
+      <button className = "button" onClick={() => navigate("/pets")}>Cancel application</button>
     </div>
   );
 };
