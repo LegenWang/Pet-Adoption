@@ -12,6 +12,7 @@
   right: 0; 
   z-index: 9999;
   height: 65px; 
+  
 }
 
 .navbar .navbar-brand {
@@ -21,7 +22,7 @@
 }
 
 .navbar .navbar-brand:hover {
-  color: #456352;
+  color: #ea0033;
 }
 
 .navbar-nav {
@@ -41,7 +42,11 @@
 }
 
 .navbar-nav .nav-item .nav-link:hover {
-  color: #456352;
+  color: #ea0033;
+  background-color: rgb(255, 255, 255);
+  border: 4px solid #ea0033;
+  border-radius: 1rem;
+  transform: scale(1); /* Use transform to scale the element without affecting layout */
 }
 
 .collapse.navbar-collapse {
@@ -61,7 +66,9 @@
 }
 
 .logout-btn:hover {
-  background-color: #767575;
+  color: #ea0033;
+  background-color: rgb(255, 255, 255);
+  border: 4px solid #ea0033;
 }
 
 /* Make navbar items stack on smaller screens */

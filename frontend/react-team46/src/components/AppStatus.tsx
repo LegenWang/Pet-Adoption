@@ -50,7 +50,7 @@ const ApplicationStatus: React.FC = () => {
         ))}
       </ul>
 
-      <button onClick={() => navigate("/pets")}>Cancel application</button>
+      <button className = "button" onClick={() => navigate("/pets")}>Cancel application</button>
     </div>
   );
 };
