@@ -102,7 +102,7 @@ const LoginPage: React.FC = () => {
         <div className="toggle">
           <p>
             {isRegistering ? "Already have an account? " : "Don't have an account? "}
-            <button onClick={toggleForm}>
+            <button className = "button" onClick={toggleForm}>
               {isRegistering ? "Login" : "Register"}
             </button>
           </p>
