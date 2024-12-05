@@ -1,22 +1,19 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const role = localStorage.getItem('role');
+  const { isAuthenticated, isLoading } = useAuth0();
 
-  // Debug: Log the role to check its value
-  console.log("User Role: ", role);
-
-  if (role !== 'manager') {
-    // Redirect to a different page if not a manager
-    return <Navigate to="/" />;
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-  return <>{children}</>;
+  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;

@@ -1,13 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar: React.FC = () => {
-  const role = localStorage.getItem('role');
   const navigate = useNavigate();
+  const { logout, user } = useAuth0();
 
   const handleLogout = () => {
-    localStorage.removeItem('role');
-    navigate("/login");
+    logout({ 
+      logoutParams: { 
+        returnTo: window.location.origin 
+      } 
+    });
   };
 
   return (
@@ -21,23 +25,18 @@ const Navbar: React.FC = () => {
             <a className="nav-link" href="/pets">Pets</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/login">Login</a>
-          </li>
-          {role === 'manager' && (
-            <li className="nav-item">
-              <a className="nav-link" href="/application-view">Manage Applications</a>
-            </li>
-          )}
-          <li className="nav-item">
             <a className="nav-link" href="/status">Status</a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/application">Fill Application</a>
           </li>
         </ul>
-        <button onClick={handleLogout} className="logout-btn">
-          Logout
-        </button>
+        <div className="auth-info">
+          <span>Welcome, {user?.name}</span>
+          <button onClick={handleLogout} className="logout-btn">
+            Logout
+          </button>
+        </div>
       </div>
     </nav>
   );

@@ -1,5 +1,11 @@
 ''' API File '''
 import sqlite3
+import os
+from functools import wraps
+import requests
+import jwt
+from jwt.exceptions import PyJWTError
+from functools import wraps
 from flask import Blueprint, request, jsonify, Flask
 from flasgger import Swagger
 
@@ -16,6 +22,62 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
+
+def verify_token(f):
+    '''
+    Decorator to verify Auth0 JWT token
+    '''
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        auth_header = request.headers.get('Authorization')
+        if not auth_header:
+            return jsonify({"error": "Authorization header is missing"}), 401
+        
+        try:
+            # Remove 'Bearer ' from the header
+            token = auth_header.split(' ')[1]
+            
+            # Fetch JWKS (JSON Web Key Set) from Auth0
+            domain = "dev-pwaee0xegp145q52.us.auth0.com"  # Replace with your Auth0 domain
+            jwks_url = f'https://{domain}/.well-known/jwks.json'
+            
+            # Fetch JWKS
+            jwks_response = requests.get(jwks_url)
+            jwks = jwks_response.json()
+            
+            # Find the right key for the token
+            unverified_header = jwt.get_unverified_header(token)
+            rsa_key = {}
+            for key in jwks['keys']:
+                if key['kid'] == unverified_header['kid']:
+                    rsa_key = {
+                        'kty': key['kty'],
+                        'kid': key['kid'],
+                        'use': key['use'],
+                        'n': key['n'],
+                        'e': key['e']
+                    }
+            
+            if not rsa_key:
+                return jsonify({"error": "Unable to find appropriate key"}), 401
+
+            # Verify the token
+            payload = jwt.decode(
+                token, 
+                rsa_key, 
+                algorithms=['RS256'], 
+                audience="https://dev-pwaee0xegp145q52.us.auth0.com/api/v2/",  # Replace with your Auth0 API identifier
+                options={"verify_aud": False}
+            )
+        except jwt.ExpiredSignatureError:
+            return jsonify({"error": "Token has expired"}), 401
+        except PyJWTError:
+            return jsonify({"error": "Invalid token"}), 401
+        except Exception as e:
+            return jsonify({"error": "Authentication failed", "details": str(e)}), 401
+        
+        return f(*args, **kwargs)
+    return decorated_function
 
 @user_blueprint.route('/login', methods=['POST'])
 def login_users():
@@ -156,6 +218,7 @@ def register_user():
     return jsonify({"message": "User registered successfully"}), 201
 
 @user_blueprint.route('/all', methods=['GET'])
+@verify_token
 def get_all_users():
     """
     Fetch all users from the database.
