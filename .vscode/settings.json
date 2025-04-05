@@ -1,3 +1,4 @@
 {
-    "github-enterprise.uri": "https://github.uconn.edu"
+    "github-enterprise.uri": "https://github.uconn.edu",
+    "git.ignoreLimitWarning": true
 }
