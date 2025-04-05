@@ -1,4 +1,4 @@
-# Pet Adoption Web
+# Pet Adoption Website
 Developed by Shilong Wang, Alexander Torino, Bereket Wolderufael, Gabriel Zambrano
 
 ## Introduction
@@ -14,12 +14,12 @@ This is a website for users who are trying to adopt their new pet around local a
 - Axios Network call
 
 ## Approaches or some other tools used
-Agile - to have the ability create and respond to the change instantly 
-Docker - to package the enitre web app into a contain that runs everywhere
-YAML, Pylint - to define CI/CD pipeline as code and test the implemention as well as the readability of code 
-Trello - to setup the sprint or the assignments for everyone weekly
-Figma - to design the user interface page and link all the buttons
-DrawIO - to construct the database and figure out how the data will be organized and structured
+- Agile - to have the ability create and respond to the change instantly 
+- Docker - to package the enitre web app into a contain that runs everywhere
+- YAML, Pylint - to define CI/CD pipeline as code and test the implemention as well as the readability of code 
+- Trello - to setup the sprint or the assignments for everyone weekly
+- Figma - to design the user interface page and link all the buttons
+- DrawIO - to construct the database and figure out how the data will be organized and structured
  
 ## Features and Appendix
 - Home page: To provide the introduction or the values of this website
