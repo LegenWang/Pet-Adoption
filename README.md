@@ -49,7 +49,8 @@ DrawIO - to construct the database and figure out how the data will be organized
 ![homepage](https://github.com/user-attachments/assets/911cbc35-da26-4f25-b7fe-c5837f96b22f)
 
 ## Application Questionnnaire 
-<img width="316" alt="Screenshot 2025-03-27 at 07 49 41" src="https://github.com/user-attachments/assets/8e3de437-2455-4e64-b86f-011e6fcd682a" />
+<img width="711" alt="Application Questionnaire" src="https://github.com/user-attachments/assets/e8c09a12-1e4e-41b1-8590-6e4ffbb5e20a" />
+
 
 ## Application Details in Management Portal 
 ![ApplicaitonDetail](https://github.com/user-attachments/assets/12708207-c27b-47dc-afb2-2476947af6cd)
