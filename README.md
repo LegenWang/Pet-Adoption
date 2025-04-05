@@ -46,7 +46,7 @@ This is a website for users who are trying to adopt their new pet around local a
 <img width="952" alt="Screenshot 2025-04-05 at 17 58 10" src="https://github.com/user-attachments/assets/93533c70-3dc1-4545-a674-236ea72421eb" />
 
 ## Status Page 
-![homepage](https://github.com/user-attachments/assets/911cbc35-da26-4f25-b7fe-c5837f96b22f)
+<img width="1307" alt="Screenshot 2025-04-05 at 19 29 57" src="https://github.com/user-attachments/assets/325a3cf3-0f7e-4050-827f-b359cb1ab115" />
 
 ## Application Questionnnaire 
 <img width="711" alt="Application Questionnaire" src="https://github.com/user-attachments/assets/e8c09a12-1e4e-41b1-8590-6e4ffbb5e20a" />
